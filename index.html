@@ -1,0 +1,1170 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FNW ASSESSORIA DIGITAL - Universidade Corporativa (Clone)</title>
+    <link href="//www.sie.com.br/css/estilo.css?v33" rel="stylesheet" type="text/css" />
+    <link href="//www.sie.com.br/css/fontes/fontface.css" type="text/css" rel="stylesheet"  />
+    <!-- Excluído: jquery.fancybox.css -->
+    <!-- Excluído: Google Analytics -->
+
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: sans-serif; /* Fonte mais padrão */
+        }
+        * { box-sizing: border-box; }
+
+        /* Botões Padrão */
+        button, input[type="submit"], input[type="button"] {
+            cursor: pointer;
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            font-size: 0.95em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+        button:disabled, input[type="submit"]:disabled, input[type="button"]:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Botões Específicos */
+        #adminButton {
+            background: #fff;
+            border: 1px solid #aaa;
+            padding: 4px 8px;
+        }
+        #myCoursesButton {
+            background-color: #0c7cac; /* Azul */
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        #myCoursesButton:hover {
+            background-color: #0a6991;
+        }
+        #fetchTrailsButton {
+            background-color: #0c7cac; /* Azul */
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        #fetchTrailsButton:hover {
+            background-color: #0a6991;
+        }
+        #closeCoursePlayerButton {
+            /* Estilos base definidos aqui */
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border: 1px solid white;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border-radius: 3px;
+            z-index: 1001;
+        }
+        #closeCoursePlayerButton:hover {
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        /* Seções Principais */
+        #myCoursesSection, 
+        #adminSection {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto; /* Centralizado com margem superior/inferior */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 1800px !important; /* Forçando largura 1800px */
+            max-width: 95% !important; /* Forçando max-width */
+        }
+        /* Largura específica para admin não mais necessária se for 1300px */
+        /* #adminSection { width: 900px; } */ 
+
+        #coursePlayerContainer {
+            border-radius: 5px;
+            overflow: hidden; 
+            box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+            position: relative; 
+            margin: 20px auto; /* Centralizado */
+            background-color: #bc880e; /* Fundo preto */
+            width: 1800px !important; /* Forçando largura 1800px */
+            max-width: 95% !important; /* Forçando max-width */
+            height: 1000px; /* Altura ajustada para 1000px */
+            padding: 0; /* Player não tem padding interno */
+        }
+
+        /* Inputs de Texto */
+        .text-input {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 5px; 
+        }
+
+        /* Links */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tarja semitransparente no header para destacar conteúdo */
+        #header .in {
+            position: fixed !important;
+            top: 10px !important;
+            left: 0px !important;
+            width: 130% !important;
+            background-color: rgba(71, 71, 71, 0.452) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            z-index: 10000 !important;
+        }
+
+/* --- Media Query para Telas Pequenas (Mobile - Nova Tentativa) --- */
+        @media (max-width: 768px) {
+            #header .in {
+                position: static; /* Remove fixação */
+                display: block;   /* Logo e login um sobre o outro */
+                padding: 10px;
+                background-color: #38464b; /* ADICIONADO: Fundo branco para mobile */
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-bottom: 1px solid #ccc;
+                overflow: visible; /* Garante que conteúdo não seja cortado */
+            }
+
+            #logo {
+                margin: 0 auto 15px auto; /* Centraliza e adiciona margem inferior */
+                text-align: center;
+            }
+            #logo img {
+                position: static !important; /* Garante que não fique fixo */
+                display: inline-block !important; /* Permite centralização com text-align */
+                max-height: 35px; /* Mobile: Reduzida altura máxima */
+            }
+
+            #login {
+                margin-left: 0; /* Remove margem esquerda do desktop */
+                width: 100%;    /* Ocupa toda a largura */
+                position: static; /* Garante que não haja posicionamento estranho */
+                padding-top: 55px; /* ADICIONADO: Espaço acima do login para a logo */
+            }
+
+            #login-enter {
+                display: block; /* Blocos de login um abaixo do outro */
+                padding: 0; /* Mobile: REMOVIDO padding lateral novamente */
+                display: block !important; /* FORÇAR display block para mobile */
+            }
+
+            #login-form, #login-card, #login-instance {
+                margin-right: 0px;
+                margin-bottom: 20px; /* Espaço entre blocos */
+                width: 100%;
+                flex-shrink: initial; /* Reseta o flex-shrink se ainda existir */
+                /* Mobile: Removidos estilos que podem causar desalinhamento */
+                border: none; 
+                padding: 0;
+				color: lightgray;
+                background-color: #192e2b;
+				opacity: 0.8;
+                /* display: block !important; */ /* Removido !important para permitir JS esconder */
+                /* border: 1px solid #ddd; */
+                /* padding: 15px; */
+                /* background-color: #f9f9f9; */
+                /* border-radius: 4px; */
+            }
+
+            /* Estilos gerais para elementos internos do login */
+            #login label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                text-align: center; /* Mobile: Centralizar labels */
+            }
+            #login .text-input,
+            #login button,
+            #login input[type="submit"] {
+                width: 100%;
+                margin-top: 5px;
+                margin-bottom: 10px; /* Aumenta espaço inferior */
+                float: none !important; /* Remove floats antigos com prioridade */
+                margin-right: 0 !important; /* Remove margem direita de float */
+                box-sizing: border-box;
+                /* Mobile: Ajustes de botão e input */
+                padding: 8px 12px; /* Mobile: Padding reduzido */
+                font-size: 1em;
+                background-color: #f8f8f8; /* Fundo um pouco mais claro */
+                border: 1px solid #ddd;   /* Borda sutil */
+                border-radius: 3px;
+                text-align: center;
+                /* padding: 8px; */ 
+                /* font-size: 1em; */
+            }
+             /* Mobile: Estilo Hover para botões */
+            #login button:hover,
+            #login input[type="submit"]:hover {
+                background-color: #eee;
+                border-color: #ccc;
+            }
+
+            #login small {
+                display: block;
+                text-align: center;
+                margin-top: 10px; /* Mobile: Aumentada margem superior */
+                width: 100%;
+                font-size: 0.9em;
+            }
+            #login br[style*="clear:both"] {
+                display: none; /* Esconde quebras de linha de float */
+            }
+
+            /* Ajustes específicos para floats remanescentes e flex interno */
+            #login-form > form > div {
+                width: 100% !important; 
+                float: none !important;
+                margin-right: 0 !important;
+                margin-bottom: 15px;
+            }
+            /* Mobile: Override INLINE styles within #login-form */
+            #login-form > form > div[style*="float:left"] {
+                width: 100% !important;
+                float: none !important;
+                margin-right: 0 !important;
+                padding-left: 0; /* Garante alinhamento esquerdo */
+            }
+
+            /* Esconder o 'Esqueceu a senha?' que fica solto */
+            #login-form > form > div > a#senha {
+                text-align: center; /* Centraliza */
+            }
+
+            /* REFORÇADO: Remove display flex e força empilhamento para Código Acesso e ID Instancia */
+            #login-card > form > div,
+            #login-instance > div:first-of-type {
+                display: block !important; 
+            }
+            /* REFORÇADO: Garante alinhamento e largura interna para Código Acesso e ID Instancia */
+            #login-card > form > div > div, 
+            #login-instance > div:first-of-type > div {
+                margin-right: 0 !important;
+                margin-bottom: 10px !important; 
+                width: 100% !important; 
+                padding-left: 0 !important; 
+            }
+            /* REFORÇADO: Força botão abaixo do input em Código Acesso e ID Instancia */
+            #login-card button[type="submit"],
+            #login-instance button[type="button"] {
+                display: block !important;
+                width: 100% !important;
+                margin-top: 5px !important;
+                float: none !important; /* Garantia extra */
+            }
+            
+            /* --- Regras específicas para estado LOGADO no Mobile --- */
+
+            /* Esconde forms de login quando logado */
+            body.logged-in #login-enter {
+                display: none !important;
+            }
+
+            /* Mostra botões de usuário quando logado */
+            body.logged-in #myCoursesButton,
+            body.logged-in #adminButton {
+                position: static;
+                display: block !important; /* Usa !important para garantir override */
+                width: calc(100% - 40px); /* Largura com margem */
+                margin: 20px auto; /* Centraliza */
+                text-align: center;
+                float: none;
+                padding: 12px;
+                font-size: 1.1em;
+                /* Herda outros estilos de botão se necessário ou define aqui */
+            }
+
+            /* --- Fim das regras de estado logado --- */
+
+            /* Botões Fixos (Conteúdo/Admin) - REGRA ANTIGA REMOVIDA 
+            #myCoursesButton, #adminButton {
+                position: static;
+                display: block; 
+                width: calc(100% - 40px); 
+                margin: 20px auto; 
+                text-align: center;
+                float: none;
+                padding: 12px;
+                font-size: 1.1em;
+            }*/
+
+            #gearIcon {
+                display: none; /* Esconde ícone engrenagem no mobile */
+            }
+        }
+
+
+    </style>
+</head>
+
+<body style="background-image:url(https://www.sie.com.br/admin/_upload/2022/01/18/29233/674cd6f7daa3c.png);background-size:cover;padding-top:100px;">
+<div id="header" style="width: 100%;">
+    <!-- Flexbox para alinhar pelo topo, login centralizado com margin auto -->
+    <div class="in" style="position: fixed; top: -5px; left: 0; width: 100%; display: flex; align-items: flex-start;">
+        <div id="logo" style="margin-right: 30px;">
+            <a href="https://sobralfreenat.github.io/fnw_curadoria_sie/">
+            <img style="max-height:50px;" src="https://d1yei2z3i6k35z.cloudfront.net/3119789/680a809b7a548_LogoFNW_SIE02.png" alt="FNW ASSESSORIA DIGITAL"  />
+            </a>
+        </div>
+        <!-- Ícone de Engrenagem Admin (Absoluto, oculto) -->
+        <span id="gearIcon" style="position: fixed; top: 20px; left: -60px; display: none; font-size: 1.5em; cursor: pointer;">⚙️</span>
+  
+        <div id="login" style="margin-left: auto; margin-right: auto; position: relative; left: -350px;">
+            <div id="login-enter" style="display: flex; justify-content: flex-start; align-items: flex-start;">
+                <div id="login-form" style="margin-right: 10px; flex-shrink: 0;">
+                    <form action="https://ava.sie.com.br/" method="post" id="frmLogin" target="_blank">
+                        <input type="hidden" name="empresa" value="MATRIZ" />
+                        <div style="width:140px;float:left;margin-right:30px;">
+                            <label>E-mail ou CPF:</label>
+                            <input autocomplete="username" class="text-input" name="email" type="text" id="email_id" size="20" required/>
+                        </div>
+                        <div style="width:230px;float:left;">
+                            <label>Senha:</label>
+                            <input autocomplete="current-password" class="text-input" name="pass" type="password" id="senha_id" size="20" style="float:left;margin-right:5px;" required/>
+                            <button type="submit" style="float:left;">Enviar</button>
+                            <br style="clear:both;" />
+                            <a href="https://www.sie.com.br/email/" id="senha" style="font-size:12px;color:#666; display: block; margin-top: 5px;">Esqueceu a senha?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- MOVIDO: Bloco ID da Instância agora virá DEPOIS do Código de Acesso -->
+                <div id="login-card" style="margin-right: 10px; flex-shrink: 0;">
+                    <form action="/cartao/" method="POST" target="_blank">
+                        <div style="display: flex; align-items: flex-end;">
+                            <div style="margin-right: 5px;">
+                                 <label style="display: block;">Código de Acesso</label>
+                                <input required class="text-input" name="card_number" id="cartao_id" type="text" maxlength="20" size="20"/>
+                            </div>
+                            <button type="submit">Enviar</button>
+                        </div>
+                        <small style="font-size:12px;color:#666; display: block; margin-top: 5px;">Informe código de resgate</small>
+                    </form>
+                </div>
+
+                <!-- START LOGIN POR ID (Agora na última posição) -->
+                <div id="login-instance" style="margin-right: 10px; flex-shrink: 0;">
+                    <div style="display: flex; align-items: flex-end;">
+                        <div style="margin-right: 5px;">
+                            <label for="instanceIdInput" style="display: block;">ID da Instância:</label>
+                            <input class="text-input" type="text" id="instanceIdInput" size="20"/>
+                        </div>
+                        <button type="button" id="loginWithInstanceIdButton">Entrar com ID</button>
+                    </div>
+                    <small style="font-size:12px;color:#666; display: block; margin-top: 5px;">Admin de Instância</small>
+                </div>
+                <!-- END LOGIN POR ID -->
+            </div>
+        </div>
+        <!-- Botão Meus Cursos (fixo no header) -->
+        <button id="myCoursesButton" type="button" style="position: fixed; top: 20px; margin-left: 180px; display: none">Conteúdos</button>
+        <!-- Botão Admin (fixo no header) -->
+        <button id="adminButton" type="button" style="position: fixed; top: 20px; margin-left: 290px; display: none; cursor: pointer; padding: 6px 15px;">Admin</button>
+    </div>
+</div>
+
+<!-- Seção Meus Cursos (agora estilizada via CSS) -->
+<div id="myCoursesSection" style="display: none; margin: 20px auto; max-width: 90%; width: 900px;">
+    <br><br><h2>Meus Cursos</h2><br><br>
+    <div id="myCoursesContainer">
+        <!-- Lista de cursos será carregada aqui -->
+    </div>
+</div>
+
+<!-- Seção Player do Curso (agora estilizada via CSS) -->
+<div id="coursePlayerContainer" style="display: none; padding: 0; margin: 20px auto; background-color: darkgray; max-width: 90%; width: 900px; height: 600px;">
+    <button id="closeCoursePlayerButton" style="position: absolute; top: 5px; right: 5px; z-index: 10; cursor: pointer; ">X</button>
+    <!-- Iframe do curso será carregado aqui -->
+</div>
+
+<!-- Seção Admin (agora estilizada via CSS) -->
+<div id="adminSection" style="display: none; margin: 20px auto; max-width: 90%; width: 800px;">
+    <br><br><br><h2>Área Administrativa</h2><br><br><br>
+    <div style="margin-bottom: 15px;"> <!-- Container para botões admin -->
+        <button id="fetchTrailsButton" type="button" style="margin-right: 10px;">📚 Minhas Trilhas</button>
+        <button id="createTrailButton" type="button" style="margin-right: 10px;">Criar Trilha</button>
+        <!-- Botão de Importação de JSON de Trilha -->
+        <button id="importTrailJsonButton" type="button" style="margin-right: 10px;">Importar JSON</button>
+        <!-- Input File oculto para Importação -->
+        <input type="file" id="importTrailJsonInput" accept=".json" style="display:none;">
+        <button id="fetchEbooksButton" type="button" style="margin-right: 10px;">Obter eBooks</button>
+        <button id="refreshAdminButton" type="button" title="Atualizar dados carregados">Atualizar</button>
+    </div>
+
+    <!-- Campo de Busca por Curso nas Trilhas (inicialmente oculto) -->
+    <div id="trailSearchContainer" style="margin-bottom: 15px; display: none;">
+        <input type="text" id="trailCourseSearchInput" placeholder="Buscar curso em trilhas..." class="text-input" style="width: 50%; padding: 8px 10px;">
+    </div>
+
+    <!-- Formulário para Criar Trilha (ajustar estilo se necessário) -->
+    <div id="createTrailFormContainer" style="display: none; margin-top: 15px; padding: 15px; border: 1px solid #ccc; background-color: #e9e9e9;">
+        <h4>Nova Trilha</h4>
+        <div style="margin-bottom: 10px;">
+            <label for="newTrailTitle" style="display: block; margin-bottom: 5px;">Título:</label>
+            <input type="text" id="newTrailTitle" name="newTrailTitle" style="width: 95%; padding: 5px;" required>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="newTrailCourses" style="display: block; margin-bottom: 5px;">IDs dos Cursos (separados por vírgula):</label>
+            <input type="text" id="newTrailCourses" name="newTrailCourses" style="width: 95%; padding: 5px;" placeholder="Ex: 864,1260,2458" required>
+        </div>
+        <button id="saveTrailButton" type="button">Salvar Trilha</button>
+    </div>
+
+    <div id="trailsContainer" style="margin-top: 15px;">
+        <!-- Conteúdo das trilhas será carregado aqui -->
+    </div>
+
+    <!-- Container para eBooks -->
+    <div id="ebooksContainer" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ccc;">
+        <!-- Conteúdo dos eBooks será carregado aqui -->
+    </div>
+</div>
+
+<div id="footer">
+    <div style="text-align:center;font-size:12px;font-family:sans-serif;"><a id="ico-politica" href="javascript:;" style="color:#666">Política de Privacidade</a></div>
+    <!-- Excluído: Div #politica-de-priv -->
+</div>
+
+<!-- Excluídos: Scripts JQuery, Fancybox, MaskedInput, page.js, Cloudflare -->
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('frmLogin');
+    const emailInput = document.getElementById('email_id');
+    const passwordInput = document.getElementById('senha_id');
+    const adminButton = document.getElementById('adminButton');
+    const adminSection = document.getElementById('adminSection');
+    const gearIcon = document.getElementById('gearIcon');
+    const fetchTrailsButton = document.getElementById('fetchTrailsButton');
+    const trailsContainer = document.getElementById('trailsContainer');
+    const createTrailButton = document.getElementById('createTrailButton');
+    const createTrailFormContainer = document.getElementById('createTrailFormContainer');
+    const newTrailTitleInput = document.getElementById('newTrailTitle');
+    const newTrailCoursesInput = document.getElementById('newTrailCourses');
+    const saveTrailButton = document.getElementById('saveTrailButton');
+    const fetchEbooksButton = document.getElementById('fetchEbooksButton');
+    const ebooksContainer = document.getElementById('ebooksContainer');
+    const refreshAdminButton = document.getElementById('refreshAdminButton');
+    const myCoursesButton = document.getElementById('myCoursesButton');
+    const myCoursesSection = document.getElementById('myCoursesSection');
+    const myCoursesContainer = document.getElementById('myCoursesContainer');
+    const coursePlayerContainer = document.getElementById('coursePlayerContainer');
+    const loginCardDiv = document.getElementById('login-card');
+    const closeCoursePlayerButton = document.getElementById('closeCoursePlayerButton');
+    const trailSearchContainer = document.getElementById('trailSearchContainer'); // Referência para o container da busca
+    const instanceIdInput = document.getElementById('instanceIdInput');
+    const loginWithInstanceIdButton = document.getElementById('loginWithInstanceIdButton');
+    const importTrailJsonButton = document.getElementById('importTrailJsonButton');
+    const importTrailJsonInput = document.getElementById('importTrailJsonInput');
+
+    const apiToken = '6a2f35f5b59eee441a72b515f83271bbf85ef3d4'; // Token MATRIZ (Pai) - Restaurado como padrão
+    // const apiToken = 'a721b3ce16d7beb657de2e22fb9bb6e08d28de2f'; // Token da Instância 29220 (Filial) - Comentado
+    const loginApiUrl = 'https://www.iped.com.br/api/user/login';
+    const trailsApiUrl = 'https://www.iped.com.br/api/trail/get-trails';
+    const setTrailApiUrl = 'https://www.iped.com.br/api/trail/set-trail';
+    const ebooksApiUrl = 'https://www.iped.com.br/api/ebook/get-ebooks';
+    const courseInProgressApiUrl = 'https://www.iped.com.br/api/course/get-inprogress';
+    const courseEnvApiUrl = 'https://www.iped.com.br/api/course/get-environment';
+
+    let loggedInUserId = null;
+    let loggedInUserToken = null;
+    let currentTrailsData = []; // Guarda os dados das trilhas carregadas
+    let loggedInUserEmail = null; // ADICIONADO: para guardar email do admin logado
+    let loggedInUserApiToken = null; // ADICIONADO: para guardar o token usado no login bem-sucedido
+
+    // INSEGURO - APENAS PARA TESTE LOCAL: Mapeamento de ID -> Credenciais e Token
+    const instanceCredentials = {
+        'MATRIZ': { email: 'sobral.pessoal@gmail.com', password: 'sobpessoal25A$', token: '6a2f35f5b59eee441a72b515f83271bbf85ef3d4' },
+        '29690':  { email: 'demob2b@fnw.com', password: 'demob2b25A$', token: '232f7418404f74ee7778d1973ea984bb5686dbdb' },
+        '29689':  { email: 'demob2c@fnw.com', password: 'demob2c25A$', token: '027279a16eee70e0f0d1a84d5acadb4beb17bc3f' },
+        '29220':  { email: 'lab.freenat@gmail.com', password: 'labfnw25A$', token: 'a721b3ce16d7beb657de2e22fb9bb6e08d28de2f' },
+        '29233':  { email: 'fnw.videos@gmail.com', password: 'fnwvideos25A$' , token: 'bb2c4d19a5ef0fec48e363618611614b4e0dfce' }, // Senha não estava no doc/imagem
+        '29445':  { email: 'fnw@freenatwork.com', password: 'fnwfnw25A$', token: '2d6f9af00b69bc17b84b8b8eee4f28d27d0fc8b1' },
+        '29192':  { email: 'freenatwork.21@gmail.com', password: 'fnw2125A$', token: '1d482402e5c4800c2e5c82d6be9fed100cfb2797' }
+        // Adicione outras instâncias aqui se necessário
+        // ATENÇÃO: Senha da 29233 não foi fornecida, precisa ser adicionada manualmente se quiser testar.
+    };
+
+    // Lista de e-mails autorizados para ver os controles de admin (Admin FNW principal)
+    const authorizedAdminEmails = [
+        'sobral.pessoal@gmail.com'
+    ].map(email => email.toLowerCase()); // Normaliza para minúsculas
+
+    // Função para RENDERIZAR as trilhas no container
+    function renderTrails(trailsArray) {
+        let trailsHtml = '';
+        if (!trailsArray || trailsArray.length === 0) {
+            trailsHtml = '<p>Nenhuma trilha encontrada (ou correspondente ao filtro).</p>';
+        } else {
+            trailsArray.forEach(trail => {
+                const trailId = trail.trail_id;
+                // Lógica de geração do HTML da trilha (copiada/movida de fetchAndDisplayTrails)
+                trailsHtml += `
+                    <div class="trail-item" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; background: #fff;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" class="toggle-details" data-trail-id="${trailId}">
+                            <h4>${trail.trail_title || 'Trilha sem título'}</h4>
+                            <span class="toggle-icon" style="font-size: 1.2em;">▼</span>
+                        </div>
+                        <div class="trail-details" id="details-${trailId}" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #eee;">
+                            <p><strong>Objetivo:</strong> ${trail.trail_objective || 'N/A'}</p>
+                            <p><strong>Prazo:</strong> ${trail.trail_conclusion_date || 'N/A'}</p>
+                            ${trail.trail_conclusion_message ? `<p><strong>Mensagem:</strong> ${trail.trail_conclusion_message}</p>` : ''}
+                            <div class="courses-list" style="margin-top: 10px;">
+                                <h5>Cursos:</h5>
+                `;
+                if (trail.trail_courses && trail.trail_courses.length > 0) {
+                    trailsHtml += '<ul>';
+                    trail.trail_courses.forEach(course => {
+                        const courseTitle = course.course_title || `Curso ID ${course.course_id || 'Desconhecido'}`;
+                        const availability = course.course_trail_available === 1 ? 'Disponível' : 'Indisponível';
+                        const message = course.course_trail_message ? `(${course.course_trail_message})` : '';
+                        trailsHtml += `
+                            <li class="course-item" data-course-id="${course.course_id}" style="cursor: pointer; margin-bottom: 3px;">
+                                ${courseTitle} - ${availability} ${message}
+                            </li>
+                        `;
+                    });
+                    trailsHtml += '</ul>';
+                } else {
+                    trailsHtml += '<p>Nenhum curso nesta trilha.</p>';
+                }
+                trailsHtml += '</div></div></div>'; 
+            });
+        }
+        trailsContainer.innerHTML = trailsHtml;
+        // Nota: Poderíamos re-aplicar listeners específicos aqui se necessário, mas o delegado deve funcionar.
+    }
+
+    // Função para buscar e exibir as trilhas (agora controla visibilidade da busca)
+    async function fetchAndDisplayTrails() {
+        if (!loggedInUserId || !loggedInUserApiToken) {
+            trailsContainer.innerHTML = '<p>Erro: Usuário não logado ou token inválido.</p>';
+            currentTrailsData = [];
+            renderTrails(currentTrailsData);
+            trailSearchContainer.style.display = 'none'; // Esconde busca no erro
+            return;
+        }
+
+        trailsContainer.innerHTML = '<p>Carregando trilhas...</p>';
+        trailsContainer.style.display = 'block';
+        trailSearchContainer.style.display = 'none'; // Esconde busca enquanto carrega
+
+        const formData = new FormData();
+        formData.append('token', loggedInUserApiToken);
+        formData.append('user_id', loggedInUserId);
+
+        try {
+            const response = await fetch(trailsApiUrl, {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            const result = await response.json();
+
+            if (result.STATE === 1 && result.TRAILS) {
+                currentTrailsData = result.TRAILS;
+                document.getElementById('trailCourseSearchInput').value = '';
+                renderTrails(currentTrailsData);
+                trailSearchContainer.style.display = 'block'; // MOSTRA busca se sucesso
+            } else if (result.STATE === 0 && result.ERROR) {
+                trailsContainer.innerHTML = `<p>Erro ao buscar trilhas: ${result.ERROR}</p>`;
+                currentTrailsData = [];
+                trailSearchContainer.style.display = 'none'; // Esconde busca no erro
+            } else {
+                trailsContainer.innerHTML = '<p>Erro inesperado ao buscar trilhas.</p>';
+                console.error('Resposta inesperada da API de trilhas:', result);
+                currentTrailsData = [];
+                trailSearchContainer.style.display = 'none'; // Esconde busca no erro
+            }
+        } catch (error) {
+            trailsContainer.innerHTML = `<p>Falha ao conectar com a API de trilhas: ${error.message}</p>`;
+            console.error('Erro na chamada da API de trilhas:', error);
+            currentTrailsData = [];
+            trailSearchContainer.style.display = 'none'; // Esconde busca no erro
+        }
+    }
+
+    // Função para criar a trilha
+    async function createTrail() {
+        const title = newTrailTitleInput.value.trim();
+        const courses = newTrailCoursesInput.value.trim();
+
+        if (!title || !courses) {
+            alert('Por favor, preencha o título e os IDs dos cursos.');
+            return;
+        }
+
+        if (!loggedInUserId || !loggedInUserToken) {
+            alert('Erro: Informações do usuário logado não encontradas. Faça login novamente.');
+            return;
+        }
+
+        // Simples validação para IDs de cursos (apenas verifica se não está vazio e contém números/vírgulas)
+        if (!/^[\d,]+$/.test(courses)) {
+            alert('Formato inválido para IDs dos Cursos. Use apenas números separados por vírgula.');
+            return;
+        }
+
+        saveTrailButton.disabled = true;
+        saveTrailButton.textContent = 'Salvando...';
+
+        const formData = new FormData();
+        formData.append('token', loggedInUserApiToken);
+        formData.append('user_id', loggedInUserId);
+        formData.append('user_token', loggedInUserToken);
+        formData.append('title', title);
+        formData.append('courses', courses);
+
+        try {
+            const response = await fetch(setTrailApiUrl, {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            const result = await response.json();
+
+            if (result.STATE === 1 && result.SUCCESS) {
+                alert(result.SUCCESS);
+                createTrailFormContainer.style.display = 'none';
+                newTrailTitleInput.value = '';
+                newTrailCoursesInput.value = '';
+                fetchAndDisplayTrails();
+            } else if (result.STATE === 0 && result.ERROR) {
+                alert(`Erro ao criar trilha: ${result.ERROR}`);
+            } else {
+                alert('Erro inesperado ao criar trilha.');
+                console.error('Resposta inesperada da API set-trail:', result);
+            }
+        } catch (error) {
+            alert(`Falha ao conectar com a API para criar trilha: ${error.message}`);
+            console.error('Erro na chamada da API set-trail:', error);
+        } finally {
+            saveTrailButton.disabled = false;
+            saveTrailButton.textContent = 'Salvar Trilha';
+        }
+    }
+
+    // Função para buscar e exibir os eBooks
+    async function fetchAndDisplayEbooks() {
+        // Restaurado: Validação de login
+        if (!loggedInUserId || !loggedInUserToken) {
+            ebooksContainer.innerHTML = '<p>Erro: Usuário não logado.</p>';
+            return;
+        }
+
+        ebooksContainer.innerHTML = '<p>Carregando eBooks...</p>'; // Mensagem original restaurada
+        ebooksContainer.style.display = 'block'; // Garante visibilidade ao carregar/erro
+
+        // Restaurado: Código Original da API
+        const formData = new FormData();
+        formData.append('token', loggedInUserApiToken);
+        formData.append('user_id', loggedInUserId);
+        formData.append('user_token', loggedInUserToken);
+
+        try {
+            const response = await fetch(ebooksApiUrl, {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            const result = await response.json();
+
+            if (result.STATE === 1 && result.EBOOKS) {
+                let ebooksHtml = '<h4>eBooks Disponíveis</h4>';
+                if (result.EBOOKS.length === 0) {
+                    ebooksHtml += '<p>Nenhum eBook encontrado.</p>'; // Mensagem se a lista estiver vazia
+                } else {
+                    ebooksHtml += '<ul>';
+                    result.EBOOKS.forEach(ebook => {
+                        ebooksHtml += `
+                            <li>
+                                <strong>${ebook.ebook_title || 'eBook sem título'}</strong>
+                                ${ebook.ebook_url ? `<a href="${ebook.ebook_url}" target="_blank" style="margin-left: 10px;">(Acessar)</a>` : ''}
+                                ${ebook.ebook_description ? `<p style="font-size: 0.9em; margin-left: 15px;">${ebook.ebook_description}</p>` : ''}
+                            </li>
+                        `;
+                    });
+                    ebooksHtml += '</ul>';
+                }
+                ebooksContainer.innerHTML = ebooksHtml;
+            } else if (result.STATE === 0 && result.ERROR) {
+                ebooksContainer.innerHTML = `<p>Erro ao buscar eBooks: ${result.ERROR}</p>`;
+            } else {
+                ebooksContainer.innerHTML = '<p>Erro inesperado ao buscar eBooks.</p>';
+                console.error('Resposta inesperada da API de eBooks:', result);
+            }
+        } catch (error) {
+            ebooksContainer.innerHTML = `<p>Falha ao conectar com a API de eBooks: ${error.message}</p>`;
+            console.error('Erro na chamada da API de eBooks:', error);
+        }
+    }
+
+    // Função para mostrar/ocultar a seção admin
+    function toggleAdminSection() {
+        const isHidden = adminSection.style.display === 'none';
+        adminSection.style.display = isHidden ? 'block' : 'none';
+        if (isHidden) {
+            // Rola para a seção admin quando ela é exibida
+            adminSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Função para buscar e exibir Meus Cursos (agora usa get-inprogress)
+    async function fetchAndDisplayMyCourses() {
+        if (!loggedInUserId || !loggedInUserToken || !loggedInUserApiToken) {
+            myCoursesContainer.innerHTML = '<p>Erro: Usuário não logado ou informações incompletas.</p>';
+            myCoursesSection.style.display = 'block';
+            // Rola para a seção mesmo em caso de erro (para mostrar a mensagem)
+            myCoursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+        myCoursesContainer.innerHTML = '<p>Carregando seus cursos em andamento...</p>';
+        myCoursesSection.style.display = 'block';
+        // Rola para a seção Meus Cursos quando ela é exibida
+        myCoursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const formData = new FormData();
+        formData.append('token', loggedInUserApiToken);
+        formData.append('user_id', loggedInUserId);
+        formData.append('user_token', loggedInUserToken);
+
+        try {
+            const response = await fetch(courseInProgressApiUrl, { method: 'POST', body: formData });
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            const result = await response.json();
+
+            // Verifica se a resposta contém o array COURSES
+            if (result.STATE === 1 && result.COURSES) {
+                let coursesHtml = '';
+                if (result.COURSES.length === 0) {
+                    coursesHtml = '<p>Nenhum curso em andamento encontrado.</p>';
+                } else {
+                    coursesHtml += '<ul>';
+                    result.COURSES.forEach(course => {
+                        // A resposta de get-inprogress já tem mais detalhes
+                        const progress = course.course_user?.user_course_completed; // Pega progresso de dentro do objeto course_user
+                        coursesHtml += `
+                            <li class="course-item" data-course-id="${course.course_id}" style="cursor: pointer; margin-bottom: 5px; padding: 5px; border-bottom: 1px solid #eee;">
+                                <strong>${course.course_title || 'Curso sem título'}</strong>
+                                ${progress !== undefined ? `<span style="margin-left: 10px;">(${progress}% concluído)</span>` : ''}
+                            </li>
+                        `;
+                    });
+                    coursesHtml += '</ul>';
+                }
+                myCoursesContainer.innerHTML = coursesHtml;
+            } else if (result.STATE === 0 && result.ERROR) {
+                myCoursesContainer.innerHTML = `<p>Erro ao buscar cursos: ${result.ERROR}</p>`;
+            } else {
+                myCoursesContainer.innerHTML = '<p>Erro inesperado ao buscar cursos (resposta inválida).</p>';
+                console.error('Resposta inesperada da API get-inprogress:', result);
+            }
+        } catch (error) {
+            myCoursesContainer.innerHTML = `<p>Falha ao conectar com a API de cursos: ${error.message}</p>`;
+            console.error('Erro na chamada da API get-inprogress:', error);
+        }
+    }
+
+    // Função para carregar o ambiente do curso
+    async function loadCourseEnvironment(courseId) {
+        if (!loggedInUserId || !loggedInUserToken || !loggedInUserApiToken) {
+            coursePlayerContainer.innerHTML = '<p style="color: white; padding: 20px;">Erro: Usuário não logado ou informações incompletas.</p>';
+            coursePlayerContainer.style.display = 'block';
+            return;
+        }
+        // Encontra o botão fechar ANTES de limpar
+        const closeButton = coursePlayerContainer.querySelector('#closeCoursePlayerButton');
+        coursePlayerContainer.innerHTML = ''; // Limpa container
+        if (closeButton) {
+            // Remove estilos inline que agora estão no CSS
+            closeButton.style.backgroundColor = '';
+            closeButton.style.color = '';
+            closeButton.style.border = '';
+            closeButton.style.padding = '';
+            closeButton.style.fontSize = '';
+            closeButton.style.borderRadius = '';
+            // Mantém os essenciais
+            // closeButton.style.position = 'absolute'; 
+            // closeButton.style.top = '5px'; 
+            // closeButton.style.right = '5px'; 
+            // closeButton.style.zIndex = '1001'; 
+            // closeButton.style.cursor = 'pointer';
+            coursePlayerContainer.appendChild(closeButton); // Readiciona o botão
+        }
+        
+        const loadingMessage = document.createElement('p');
+        loadingMessage.textContent = 'Carregando ambiente do curso...';
+        loadingMessage.style.color = 'white';
+        loadingMessage.style.padding = '20px';
+        coursePlayerContainer.appendChild(loadingMessage);
+
+        coursePlayerContainer.style.display = 'block';
+        coursePlayerContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        const formData = new FormData();
+        formData.append('token', loggedInUserApiToken);
+        formData.append('user_id', loggedInUserId);
+        formData.append('user_token', loggedInUserToken);
+        formData.append('course_id', courseId);
+        formData.append('course_layout', '2'); // Layout padrão
+        formData.append('course_activities', '1'); // ADICIONADO: Parâmetro obrigatório (1 = Ativar)
+
+        try {
+            const response = await fetch(courseEnvApiUrl, { method: 'POST', body: formData });
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            const result = await response.json();
+            
+            // Remove mensagem de carregamento
+            if(loadingMessage) loadingMessage.remove();
+
+            if (result.STATE === 1 && result.ENVIRONMENT && result.ENVIRONMENT.course_iframe_url) {
+                // Cria e adiciona o iframe dinamicamente
+                const iframe = document.createElement('iframe');
+                iframe.src = result.ENVIRONMENT.course_iframe_url;
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+                iframe.allowFullscreen = true;
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                coursePlayerContainer.appendChild(iframe);
+
+            } else if (result.STATE === 0 && result.ERROR) {
+                const errorMessage = document.createElement('p');
+                errorMessage.textContent = `Erro ao carregar curso: ${result.ERROR}`;
+                errorMessage.style.color = 'white';
+                errorMessage.style.padding = '20px';
+                coursePlayerContainer.appendChild(errorMessage);
+            } else {
+                const errorMessage = document.createElement('p');
+                errorMessage.textContent = 'Erro inesperado ao carregar curso.';
+                errorMessage.style.color = 'white';
+                errorMessage.style.padding = '20px';
+                coursePlayerContainer.appendChild(errorMessage);
+                console.error('Resposta inesperada da API course environment:', result);
+            }
+        } catch (error) {
+            // Remove mensagem de carregamento em caso de erro de fetch
+            if(loadingMessage) loadingMessage.remove();
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = `Falha ao conectar com a API do curso: ${error.message}`;
+            errorMessage.style.color = 'white';
+            errorMessage.style.padding = '20px';
+            coursePlayerContainer.appendChild(errorMessage);
+            console.error('Erro na chamada da API course environment:', error);
+        }
+    }
+
+    // Função UNIFICADA para processar o resultado do login (chamada por ambos os métodos)
+    function handleLoginSuccess(result, userEmail, tokenUsed) {
+        loggedInUserId = result.USER_ID;
+        loggedInUserToken = result.USER_TOKEN;
+        loggedInUserEmail = userEmail;
+        loggedInUserApiToken = tokenUsed; // ADICIONADO: guarda o token da API da instância/pai que funcionou
+
+        // Esconde todos os forms de login, mostra botão Conteúdos
+        loginForm.style.display = 'none';
+        if (loginCardDiv) loginCardDiv.style.display = 'none';
+        const loginInstanceDiv = document.getElementById('login-instance'); // Esconde form de ID tbm
+        if (loginInstanceDiv) loginInstanceDiv.style.display = 'none';
+        myCoursesButton.style.display = 'inline-block'; // Troca para inline-block
+
+        // Referência ao título da seção
+        const adminSectionTitle = document.querySelector('#adminSection h2');
+
+        // Mostra controles admin FNW SE o e-mail logado for o autorizado
+        const loggedInEmailNormalized = userEmail.trim().toLowerCase();
+        if (authorizedAdminEmails.includes(loggedInEmailNormalized)) {
+            adminButton.style.display = 'inline-block'; // Troca para inline-block
+            gearIcon.style.display = 'inline-block'; // Troca para inline-block
+            adminSection.style.display = 'none'; // Inicia oculto mesmo para admins
+            if (adminSectionTitle) adminSectionTitle.textContent = 'Área Administrativa';
+        } else {
+            adminButton.style.display = 'none';
+            gearIcon.style.display = 'none';
+            adminSection.style.display = 'block'; // Mostra automaticamente apenas botão Minhas Trilhas para usuários comuns
+            // Esconde todos os botões admin exceto Minhas Trilhas para usuários não-admin
+            createTrailButton.style.display = 'none';
+            fetchEbooksButton.style.display = 'none';
+            refreshAdminButton.style.display = 'none';
+            // Muda o título da seção
+            if (adminSectionTitle) adminSectionTitle.textContent = 'Minhas Trilhas de Aprendizado';
+            // Busca trilhas automaticamente
+            fetchAndDisplayTrails();
+        }
+        // Oculta seções que podem estar abertas de um login anterior
+        myCoursesSection.style.display = 'none';
+        coursePlayerContainer.style.display = 'none';
+    }
+
+    // Função para realizar a chamada da API de login (AGORA ACEITA TOKEN ESPECÍFICO)
+    async function performLogin(userEmail, userPassword, instanceToken = apiToken) {
+        // Usa instanceToken se fornecido, senão usa o apiToken global (para login via form principal)
+        const currentApiToken = instanceToken;
+
+        const loginFormData = new FormData();
+        loginFormData.append('token', currentApiToken); // USA O TOKEN CORRETO (global ou específico da instância)
+        loginFormData.append('user_email', userEmail);
+        loginFormData.append('user_password', userPassword);
+
+        try {
+            const response = await fetch(loginApiUrl, {
+                method: 'POST',
+                body: loginFormData
+            });
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            const result = await response.json();
+
+            if (result.STATE === 1 && result.USER_ID && result.USER_TOKEN) {
+                handleLoginSuccess(result, userEmail, currentApiToken); // Passa o token que foi usado com sucesso
+            } else if (result.STATE === 0 && result.ERROR) {
+                alert(`Erro: ${result.ERROR}`);
+            } else {
+                alert('Erro inesperado ao tentar fazer login ou dados faltando na resposta (USER_ID/USER_TOKEN).');
+                console.error('Resposta inesperada da API de login:', result);
+            }
+        } catch (error) {
+            alert(`Falha ao conectar com a API de login: ${error.message}`);
+            console.error('Erro na chamada da API de login:', error);
+        }
+    }
+
+    // Adicionado console.log para depuração
+    console.log('Verificando elementos para adicionar listeners...');
+
+    // Verifica se todos os elementos necessários existem (incluindo os novos para Login por ID)
+    const trailCourseSearchInput = document.getElementById('trailCourseSearchInput');
+    // START LOGIN POR ID (TEMPORARIO) - Verificação de elementos
+    if (loginForm && emailInput && passwordInput && adminButton && adminSection && gearIcon && fetchTrailsButton && trailsContainer && createTrailButton && createTrailFormContainer && newTrailTitleInput && newTrailCoursesInput && saveTrailButton && fetchEbooksButton && ebooksContainer && refreshAdminButton && myCoursesButton && myCoursesSection && myCoursesContainer && coursePlayerContainer && loginCardDiv && closeCoursePlayerButton && trailCourseSearchInput && trailSearchContainer && instanceIdInput && loginWithInstanceIdButton && importTrailJsonButton && importTrailJsonInput) {
+    // END LOGIN POR ID (TEMPORARIO) - Verificação de elementos
+
+        // Listener do Login PADRÃO (E-mail/Senha)
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const userEmail = emailInput.value;
+            const userPassword = passwordInput.value;
+            await performLogin(userEmail, userPassword); // Chama a função de login
+        });
+
+        // START LOGIN POR ID (COMENTADO - AGUARDANDO SUPABASE)
+        // NOVO: Listener do Login por ID da Instância (Deve funcionar agora)
+        // Adicionado console.log para depuração
+        console.log('Adicionando listener ao botão Entrar com ID');
+        loginWithInstanceIdButton.addEventListener('click', async () => {
+            const instanceIdInput = document.getElementById('instanceIdInput'); // Garantir que temos a referência aqui dentro
+            const instanceId = instanceIdInput.value.trim().toUpperCase(); // Pegar o ID e normalizar para maiúsculas
+
+            if (!instanceId) {
+                alert('Por favor, digite o ID da Instância.');
+                return;
+            }
+
+            // Procurar as credenciais e token no objeto (INSEGURO)
+            const credentials = instanceCredentials[instanceId];
+
+            if (credentials) {
+                // VERIFICA SE TEM SENHA (Ex: ID 29233 pode não ter)
+                if (!credentials.password || credentials.password === '???') {
+                    alert(`Senha para ID da Instância "${instanceId}" não está configurada no código. Login não pode continuar.`);
+                    console.warn(`Senha faltando para ID ${instanceId}`);
+                    return; // Interrompe aqui se a senha não estiver definida
+                }
+
+                console.log(`Credenciais e Token encontrados para ID ${instanceId}: ${credentials.email}, Token: ${credentials.token}`);
+                // Chamar a função de login normal com as credenciais E O TOKEN específico
+                loginWithInstanceIdButton.disabled = true;
+                loginWithInstanceIdButton.textContent = 'Entrando...';
+                try {
+                    await performLogin(credentials.email, credentials.password, credentials.token); // Passa o token específico
+                    instanceIdInput.value = ''; // Limpar campo após tentativa (sucesso ou falha)
+                } catch (error) {
+                    // performLogin já mostra alerta, apenas logamos aqui
+                    console.error("Erro durante performLogin chamado por Entrar com ID:", error);
+                } finally {
+                    loginWithInstanceIdButton.disabled = false;
+                    loginWithInstanceIdButton.textContent = 'Entrar com ID';
+                }
+            } else {
+                alert(`ID da Instância "${instanceId}" não encontrado ou inválido.`);
+                console.warn(`ID da Instância não encontrado no mapeamento: ${instanceId}`);
+            }
+        });
+        // END LOGIN POR ID (IMPLEMENTADO DE FORMA INSEGURA PARA TESTE)
+
+        // Listener do botão Admin (usa função toggle)
+        adminButton.addEventListener('click', toggleAdminSection);
+
+        // Listener do ÍCONE Engrenagem (usa a MESMA função toggle)
+        gearIcon.addEventListener('click', toggleAdminSection);
+
+        // Listener do botão Obter Trilhas (agora esconde/mostra busca)
+        fetchTrailsButton.addEventListener('click', () => {
+            if (trailsContainer.style.display === 'block' && trailCourseSearchInput.value === '') {
+                trailsContainer.style.display = 'none';
+                trailSearchContainer.style.display = 'none'; // Esconde busca junto
+                currentTrailsData = []; 
+            } else {
+                fetchAndDisplayTrails(); 
+                // Não precisa mostrar a busca aqui, fetchAndDisplayTrails faz isso
+            }
+        });
+
+        // Listener do botão Criar Trilha (já toggle)
+        createTrailButton.addEventListener('click', () => {
+            const formWasHidden = createTrailFormContainer.style.display === 'none';
+            createTrailFormContainer.style.display = formWasHidden ? 'block' : 'none';
+            if (formWasHidden) {
+                // Rola para o formulário quando ele é exibido
+                createTrailFormContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        // Listener do botão Salvar Trilha
+        saveTrailButton.addEventListener('click', createTrail);
+
+        // Listener do botão Obter eBooks (agora toggle)
+        fetchEbooksButton.addEventListener('click', () => {
+            if (ebooksContainer.style.display === 'block') {
+                ebooksContainer.style.display = 'none';
+            } else {
+                fetchAndDisplayEbooks(); // Chama a função que eventualmente mostra o container
+                // Rola para o container após iniciar a busca e centraliza
+                ebooksContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        // Listener do botão Atualizar
+        refreshAdminButton.addEventListener('click', () => {
+            console.log('Atualizando dados admin...');
+            // Verifica se as trilhas já foram carregadas (não é o estado inicial/erro/carregando)
+            if (trailsContainer.innerHTML && !trailsContainer.innerHTML.includes('<p>Carregando') && !trailsContainer.innerHTML.includes('<p>Erro:')) {
+                console.log('Recarregando trilhas...');
+                fetchAndDisplayTrails();
+            }
+            // Verifica se os eBooks já foram carregados
+            if (ebooksContainer.innerHTML && !ebooksContainer.innerHTML.includes('<p>Carregando') && !ebooksContainer.innerHTML.includes('<p>Erro:')) {
+                console.log('Recarregando eBooks...');
+                fetchAndDisplayEbooks();
+            }
+        });
+
+        // Listener delegado para expandir/recolher detalhes da trilha E CLICAR EM CURSOS
+        trailsContainer.addEventListener('click', (event) => {
+            const detailsHeader = event.target.closest('.toggle-details');
+            const courseItem = event.target.closest('.course-item');
+
+            if (detailsHeader) { // Clicou no header da trilha
+                const trailId = detailsHeader.dataset.trailId;
+                const detailsDiv = document.getElementById(`details-${trailId}`);  
+                const iconSpan = detailsHeader.querySelector('.toggle-icon');
+                if (detailsDiv && iconSpan) {
+                    const isHidden = detailsDiv.style.display === 'none';
+                    detailsDiv.style.display = isHidden ? 'block' : 'none';
+                    iconSpan.textContent = isHidden ? '▲' : '▼';
+                }
+            } else if (courseItem && courseItem.dataset.courseId) { // Clicou em um item de curso
+                loadCourseEnvironment(courseItem.dataset.courseId);
+            }
+        });
+
+        // Listener do botão Meus Cursos (toggle)
+        myCoursesButton.addEventListener('click', () => {
+            if (myCoursesSection.style.display === 'block') {
+                myCoursesSection.style.display = 'none';
+                coursePlayerContainer.style.display = 'none'; // Esconde player tbm se fechar a lista
+            } else {
+                fetchAndDisplayMyCourses(); // Busca e mostra a seção
+            }
+        });
+
+        // Listener delegado para cliques nos itens de curso
+        myCoursesContainer.addEventListener('click', (event) => {
+            const courseItem = event.target.closest('.course-item');
+            if (courseItem && courseItem.dataset.courseId) {
+                loadCourseEnvironment(courseItem.dataset.courseId);
+            }
+        });
+
+        // Listener do botão Fechar Player
+        closeCoursePlayerButton.addEventListener('click', () => {
+            coursePlayerContainer.style.display = 'none';
+            // Remove apenas o iframe, se existir, para parar a execução
+            const iframe = coursePlayerContainer.querySelector('iframe');
+            if (iframe) {
+                iframe.remove();
+            }
+        });
+
+        // Listener para o Input de Busca de Curso em Trilhas
+        trailCourseSearchInput.addEventListener('input', () => {
+            const searchTerm = trailCourseSearchInput.value.trim().toLowerCase();
+
+            if (!searchTerm) {
+                renderTrails(currentTrailsData); // Mostra todas se busca vazia
+                return;
+            }
+
+            if (!currentTrailsData || currentTrailsData.length === 0) {
+                renderTrails([]); // Não há dados para filtrar
+                return;
+            }
+
+            const filteredTrails = currentTrailsData.filter(trail => {
+                // Verifica se a trilha tem cursos e se algum curso corresponde
+                return trail.trail_courses && trail.trail_courses.some(course => 
+                    course.course_title && course.course_title.toLowerCase().includes(searchTerm)
+                );
+            });
+
+            renderTrails(filteredTrails);
+        });
+
+        // Listener do botão Importar JSON de Trilha
+        importTrailJsonButton.addEventListener('click', () => importTrailJsonInput.click());
+        importTrailJsonInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            try {
+                const text = await file.text();
+                const payload = JSON.parse(text);
+                if (!payload.courses || !Array.isArray(payload.courses)) {
+                    alert('JSON inválido: sem campo courses');
+                    return;
+                }
+                // Preenche formulário de criação de trilha
+                newTrailTitleInput.value = payload.name || '';
+                newTrailCoursesInput.value = payload.courses.map(c => c.course_id).join(',');
+                createTrailFormContainer.style.display = 'block';
+                createTrailFormContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } catch (err) {
+                alert('Falha ao ler JSON: ' + err.message);
+            } finally {
+                importTrailJsonInput.value = '';
+            }
+        });
+
+    } else {
+        console.error('Erro: Não foi possível encontrar um ou mais elementos necessários (formulário/admin/trilhas/criação/ebooks/refresh/gearIcon/myCourses/coursePlayer/closeButton/trailCourseSearchInput/trailSearchContainer/instanceIdInput/loginWithInstanceIdButton/importTrailJsonButton/importTrailJsonInput).');
+    }
+});
+</script>
+
+</body>
+</html> 
