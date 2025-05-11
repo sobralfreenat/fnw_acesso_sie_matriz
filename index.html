@@ -622,6 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('token', loggedInUserApiToken);
         formData.append('user_id', loggedInUserId);
+        formData.append('all_formats', 'true'); // Adicionado para retornar todos os formatos nas trilhas
 
         try {
             const response = await fetch(trailsApiUrl, {
@@ -797,6 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('token', loggedInUserApiToken);
         formData.append('user_id', loggedInUserId);
         formData.append('user_token', loggedInUserToken);
+        formData.append('all_formats', 'true'); // Adicionado para retornar todos os formatos
 
         try {
             const response = await fetch(courseInProgressApiUrl, { method: 'POST', body: formData });
