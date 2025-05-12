@@ -429,7 +429,7 @@
 
 <!-- Seção Meus Cursos (agora estilizada via CSS) -->
 <div id="myCoursesSection" style="display: none; margin: 20px auto; max-width: 90%; width: 900px;">
-    <br><br><h2>Meus Cursos</h2><br><br>
+    <br><br><h2>Meus Acessos</h2><br><br>
     <div id="myCoursesContainer">
         <!-- Lista de cursos será carregada aqui -->
     </div>
@@ -685,6 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('user_token', loggedInUserToken);
         formData.append('title', title);
         formData.append('courses', courses);
+        formData.append('all_formats', 'true'); // Adicionado para que a criação da trilha considere todos os formatos
 
         try {
             const response = await fetch(setTrailApiUrl, {
