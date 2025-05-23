@@ -77,7 +77,7 @@
         /* Seções Principais */
         #myCoursesSection, 
         #adminSection {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.90); /* MODIFICADO: de 0.95 para 0.90 para mais transparência */
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 20px;
@@ -358,51 +358,56 @@
         }
         /* === FIM DOS ESTILOS DE LEGIBILIDADE === */
 
+        .blurred-background {
+            filter: blur(8px);
+            -webkit-filter: blur(8px); /* Para compatibilidade com Safari */
+        }
     </style>
 </head>
 
-<body style="background-image: url(https://d1yei2z3i6k35z.cloudfront.net/3119789/682fd0ad71082_SIECOverdesign021.png), linear-gradient(to bottom, #503060, #3B204A); background-color: #3B204A; background-size: 100% auto, 100% 100%; background-repeat: no-repeat, no-repeat; background-position: center -5px, 0 0; padding-top:100px;">
+<body style="background-image: linear-gradient(to bottom, #503060, #3B204A); background-color: #3B204A; background-size: 100% 100%; background-repeat: no-repeat; background-position: 0 0; padding-top:100px;">
+<div id="mainBackgroundImageContainer" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url(https://d1yei2z3i6k35z.cloudfront.net/3119789/682fd0ad71082_SIECOverdesign021.png); background-size: 100% auto; background-repeat: no-repeat; background-position: center -5px; transition: filter 0.3s ease-out;"></div>
 <div id="header" style="width: 100%;">
     <!-- Flexbox para alinhar pelo topo, login centralizado com margin auto -->
-    <div class="in" style="position: fixed; top: -5px; left: 0; width: 100%; display: flex; align-items: flex-start;">
-        <div id="logo" style="margin-right: 30px;">
+    <div class="in" style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; height: 70px; padding-top: 5px; padding-bottom: 5px;">
+        <div id="logo" style="margin-right: 30px; margin-left: 30px;">
             <a href="https://geriah.com/">
-            <img style="max-height:50px;" src="https://d1yei2z3i6k35z.cloudfront.net/3119789/680a809b7a548_LogoFNW_SIE02.png" alt="FNW ASSESSORIA DIGITAL"  />
+            <img style="max-height:60px;" src="https://www.sie.com.br/admin/_upload/2022/01/18/29233/682fdb1dbf08a.png" alt="GERiAH"  />
             </a>
         </div>
         <!-- Ícone de Engrenagem Admin (Absoluto, oculto) -->
         <span id="gearIcon" style="position: fixed; top: 20px; left: -60px; display: none; font-size: 1.5em; cursor: pointer;">⚙️</span>
   
-        <div id="login" style="margin-left: auto; margin-right: auto; position: relative; left: -350px;">
-            <div id="login-enter" style="display: flex; justify-content: flex-start; align-items: flex-start;">
+        <div id="login" style="margin-left: 30px; position: relative; top: 5px;">
+            <div id="login-enter" style="display: flex; justify-content: flex-start; align-items: center;">
                 <div id="login-form" style="margin-right: 10px; flex-shrink: 0;">
                     <form action="https://ava.sie.com.br/" method="post" id="frmLogin" target="_blank">
                         <input type="hidden" name="empresa" value="MATRIZ" />
-                        <div style="width:140px;float:left;margin-right:30px;">
-                            <label>E-mail ou CPF:</label>
+                        <div style="width:140px;float:left;margin-right:5px;">
+                            <label style="color: #D3D3D3;">E-mail ou CPF:</label>
                             <input autocomplete="username" class="text-input" name="email" type="text" id="email_id" size="20" required/>
                         </div>
                         <div style="width:230px;float:left;">
-                            <label>Senha:</label>
+                            <label style="color: #D3D3D3;">Senha:</label>
                             <input autocomplete="current-password" class="text-input" name="pass" type="password" id="senha_id" size="20" style="float:left;margin-right:5px;" required/>
                             <button type="submit" style="float:left;">Enviar</button>
                             <br style="clear:both;" />
-                            <a href="https://www.sie.com.br/email/" id="senha" style="font-size:12px;color:#666; display: block; margin-top: 5px;">Esqueceu a senha?</a>
+                            <a href="https://www.sie.com.br/email/" id="senha" style="font-size:12px;color:#D3D3D3; display: block; margin-top: 5px;">Esqueceu a senha?</a>
                         </div>
                     </form>
                 </div>
 
                 <!-- MOVIDO: Bloco ID da Instância agora virá DEPOIS do Código de Acesso -->
-                <div id="login-card" style="margin-right: 10px; flex-shrink: 0;">
+                <div id="login-card" style="margin-right: 40px; flex-shrink: 0; margin-left: 100px;">
                     <form action="/cartao/" method="POST" target="_blank">
                         <div style="display: flex; align-items: flex-end;">
                             <div style="margin-right: 5px;">
-                                 <label style="display: block;">Código de Acesso</label>
+                                 <label style="display: block; color: #D3D3D3;">Código de Acesso</label>
                                 <input required class="text-input" name="card_number" id="cartao_id" type="text" maxlength="20" size="20"/>
                             </div>
                             <button type="submit">Enviar</button>
                         </div>
-                        <small style="font-size:12px;color:#666; display: block; margin-top: 5px;">Informe código de resgate</small>
+                        <small style="font-size:12px;color:#D3D3D3; display: block; margin-top: 5px;">Informe código de resgate</small>
                     </form>
                 </div>
 
@@ -410,20 +415,20 @@
                 <div id="login-instance" style="margin-right: 10px; flex-shrink: 0;">
                     <div style="display: flex; align-items: flex-end;">
                         <div style="margin-right: 5px;">
-                            <label for="instanceIdInput" style="display: block;">ID da Instância:</label>
+                            <label for="instanceIdInput" style="display: block; color: #D3D3D3;">ID da Instância:</label>
                             <input class="text-input" type="text" id="instanceIdInput" size="20"/>
                         </div>
                         <button type="button" id="loginWithInstanceIdButton">Entrar com ID</button>
                     </div>
-                    <small style="font-size:12px;color:#666; display: block; margin-top: 5px;">Admin de Instância</small>
+                    <small style="font-size:12px;color:#D3D3D3; display: block; margin-top: 5px;">Admin de Instância</small>
                 </div>
                 <!-- END LOGIN POR ID -->
             </div>
         </div>
         <!-- Botão Meus Cursos (fixo no header) -->
-        <button id="myCoursesButton" type="button" style="position: fixed; top: 20px; margin-left: 180px; display: none">Demonstração - Solicitados</button>
+        <button id="myCoursesButton" type="button" style="margin-left: 20px; display: none;">Ferramentas Esclusivas</button>
         <!-- Botão Admin (fixo no header) -->
-        <button id="adminButton" type="button" style="position: fixed; top: 20px; margin-left: 290px; display: none; cursor: pointer; padding: 6px 15px;">Admin</button>
+        <button id="adminButton" type="button" style="margin-left: 15px; display: none; cursor: pointer; padding: 6px 15px;">Admin</button>
     </div>
 </div>
 
@@ -945,6 +950,19 @@ document.addEventListener('DOMContentLoaded', () => {
         loggedInUserToken = result.USER_TOKEN;
         loggedInUserEmail = userEmail;
         loggedInUserApiToken = tokenUsed; // ADICIONADO: guarda o token da API da instância/pai que funcionou
+
+        // Aplica o blur na imagem de fundo principal
+        const mainBgContainer = document.getElementById('mainBackgroundImageContainer');
+        if (mainBgContainer) {
+            mainBgContainer.classList.add('blurred-background');
+        }
+
+        // Ajusta a posição da logo após o login
+        const logoImg = document.querySelector('#logo img');
+        if (logoImg) {
+            logoImg.style.position = 'relative';
+            logoImg.style.top = '-8px';
+        }
 
         // Esconde todos os forms de login, mostra botão Conteúdos
         loginForm.style.display = 'none';
