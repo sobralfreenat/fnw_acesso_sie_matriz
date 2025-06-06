@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GERiAH - Plataforma Corporativa FNW</title>
+    <title>GERiAH - Plataforma Corporativa FNW 4.1</title>
     <link href="//www.sie.com.br/css/estilo.css?v33" rel="stylesheet" type="text/css" />
     <link href="//www.sie.com.br/css/fontes/fontface.css" type="text/css" rel="stylesheet"  />
     <!-- Excluído: jquery.fancybox.css -->
@@ -14,104 +14,8 @@
         body {
             font-family: sans-serif; /* Fonte mais padrão */
             text-align: left; /* Garante alinhamento à esquerda para todo o corpo */
-            padding-top: 70px; /* Espaço para o header fixo */
         }
         * { box-sizing: border-box; }
-
-        /* Adicionado para o novo layout com aside */
-        #mainContentArea {
-            /* margin-left já está inline, mas pode ser colocado aqui */
-            /* padding já está inline */
-            /* background-color: #f4f4f4; /* Opcional: cor de fundo para a área de conteúdo */
-        }
-
-        /* === ESTILOS DA ASIDE E COMPONENTES (DO CLONE06) === */
-        aside {
-            position: fixed;
-            top: 70px; /* Abaixo do header */
-            bottom: 0;
-            left: 0;
-            width: 230px; /* Largura da sidebar */
-            background: rgba(42, 26, 58, 0.8); /* Tom de roxo GERiAH com transparência */
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-right: 1px solid rgba(80, 48, 96, 0.7);
-            overflow-y: auto;
-            padding: 15px 15px 20px 15px;
-            z-index: 990; /* Abaixo do header mas acima do mainContentArea */
-            /* display: none; /* Controlado por JS para aparecer após login */
-        }
-        aside h2 { /* Estilo para os cabeçalhos dentro da aside, como os de acordeão */
-            margin-top: 0;
-            font-size: 1.1em;
-            color: #fff;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(80, 48, 96, 0.7);
-            font-weight: bold;
-        }
-        aside .accordion-item {
-            border-bottom: 1px solid rgba(80, 48, 96, 0.7);
-            margin-bottom: 10px;
-        }
-        aside .accordion-header { /* h2 dentro de accordion-item */
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-bottom: 0; /* Ajustado pois o h2 já tem padding-bottom */
-            margin-bottom: 0;
-            font-size: 1.1em; /* Redundante se o h2 já tem, mas ok */
-            color: #fff;
-            font-weight: bold;
-            border-bottom: none; /* Remove borda dupla se h2 já tem */
-        }
-        aside .accordion-icon {
-            font-size: 0.8em;
-            margin-left: 10px;
-        }
-        aside .accordion-content {
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 10px;
-            display: none; /* Começa fechado */
-        }
-        aside .accordion-content ul {
-            list-style: none;
-            padding: 0;
-            margin:0;
-        }
-        aside .accordion-content ul li { 
-            margin-bottom: 8px; 
-        }
-        aside .accordion-content ul li button {
-            width: 100%;
-            padding: 10px 15px;
-            text-align: left;
-            border: none;
-            background: transparent;
-            color: #d3d3d3; /* Lightgray para itens não ativos */
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 0.95em;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        aside .accordion-content ul li button:hover,
-        aside .accordion-content ul li button.active {
-            background: rgba(80, 48, 96, 0.9); /* Roxo mais forte para ativo/hover */
-            color: #fff;
-            font-weight: bold;
-        }
-        /* Estilo para o título da categoria quando exibido acima do carrossel no mainContentArea */
-        .category-title-header {
-            font-size: 1.8em;
-            color: #fff; /* Ajustar se o fundo do mainContentArea for claro */
-            margin-bottom: 20px; /* Reduzido de 30px */
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(80, 48, 96, 0.7); /* Ajustar cor se necessário */
-        }
-        /* === FIM DOS ESTILOS DA ASIDE === */
 
         /* Botões Padrão */
         button, input[type="submit"], input[type="button"] {
@@ -182,6 +86,65 @@
             width: 1800px !important; /* Forçando largura 1800px */
             max-width: 95% !important; /* Forçando max-width */
         }
+        /* NOVO: Estilos para os botões de Zerar Curso */
+        .reset-course-button {
+            background-color: #dc3545; /* Vermelho para deletar/zerar */
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            font-size: 0.85em;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.2s ease;
+        }
+        .reset-course-button:hover {
+            background-color: #c82333;
+        }
+        .reset-all-courses-button {
+            background-color: #ffc107; /* Amarelo para atenção */
+            color: black;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.95em;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.2s ease;
+        }
+        .reset-all-courses-button:hover {
+            background-color: #e0a800;
+        }
+        /* NOVO: Estilos para os botões de Ocultar/Limpar Display */
+        .hide-course-button {
+            background-color: #6c757d; /* Cinza para ocultar */
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            font-size: 0.85em;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 5px; /* Espaço entre Zerar e Ocultar */
+            transition: background-color 0.2s ease;
+        }
+        .hide-course-button:hover {
+            background-color: #5a6268;
+        }
+        .clear-display-button {
+            background-color: #17a2b8; /* Azul claro para limpar display */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.95em;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px; /* Espaço entre Zerar Todos e Limpar Display */
+            transition: background-color 0.2s ease;
+        }
+        .clear-display-button:hover {
+            background-color: #138496;
+        }
+
         /* Largura específica para admin não mais necessária se for 1300px */
         /* #adminSection { width: 900px; } */ 
 
@@ -525,92 +488,73 @@
         <button id="exploreCatalogButton" type="button" style="margin-left: 20px; display: none;">Explorar Catálogo</button>
         <!-- Botão Meus Cursos (fixo no header) -->
         <button id="myCoursesButton" type="button" style="margin-left: 20px; display: none;">Ferramentas Esclusivas</button>
-        <!-- NOVO: Botão Minhas Trilhas (para não-admins) -->
-        <button id="myTrailsButton" type="button" style="margin-left: 10px; display: none;">Minhas Trilhas</button>
         <!-- Botão Admin (fixo no header) -->
         <button id="adminButton" type="button" style="margin-left: 15px; display: none; cursor: pointer; padding: 6px 15px;">Admin</button>
     </div>
 </div>
 
-<aside style="display: none;">
-    <div class="accordion-item">
-        <h2 class="accordion-header">Conteudo de Apoio <span class="accordion-icon">▼</span></h2>
-        <div class="accordion-content">
-            <ul id="categoriesList"><li>Carregando...</li></ul>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header">Ferramentas - Acesso Imediato <span class="accordion-icon">▼</span></h2>
-        <div class="accordion-content">
-            <ul id="paiItemsList"><li>Nenhuma categoria F.A.I. configurada.</li></ul>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header">Suporte - Inteligencia Artificial <span class="accordion-icon">▼</span></h2>
-        <div class="accordion-content">
-            <ul id="suporteIaItemsList"><li>Carregando subcategorias...</li></ul>
-        </div>
-    </div>
-</aside>
+<!-- Seção do Catálogo de Conteúdos -->
+<div id="catalogSection" style="display: none; padding: 20px;">
+    <h2>Catálogo de Conteúdos</h2>
+    <!-- Aqui virá a estrutura da aside (categorias) e main (carrosséis) portada de SIeClone06_Home GERiAH.html -->
+    <p>Conteúdo do catálogo aparecerá aqui...</p>
+</div>
 
-<div id="mainContentArea" style="margin-left: 250px; padding: 20px; display: none;">
-    <div id="catalogSection" style="display: none; padding: 20px;">
-        <h2>Catálogo de Conteúdos</h2>
-        <p>Conteúdo do catálogo aparecerá aqui...</p>
+<!-- Seção Meus Cursos -->
+<div id="myCoursesSection" style="display:none; padding: 20px; background-color: rgba(255, 255, 255, 0.90);">
+    <br><br><h2>Meus Acessos</h2><br><br>
+    <div id="myCoursesContainer">
+        <!-- Lista de cursos será carregada aqui -->
     </div>
+</div>
 
-    <div id="myCoursesSection" style="display:none; padding: 20px; background-color: rgba(255, 255, 255, 0.90);">
-        <br><br><h2>Meus Acessos</h2><br><br>
-        <div id="myCoursesContainer">
-            <!-- Lista de cursos será carregada aqui -->
-        </div>
-    </div>
+<!-- Seção Player do Curso (agora estilizada via CSS) -->
+<div id="coursePlayerContainer" style="display: none; padding: 0; margin: 20px auto; background-color: darkgray; max-width: 90%; width: 900px; height: 600px;">
+    <button id="closeCoursePlayerButton" style="position: absolute; top: 5px; right: 5px; z-index: 10; cursor: pointer; ">X</button>
+    <!-- Iframe do curso será carregado aqui -->
+</div>
 
-    <div id="coursePlayerContainer" style="display: none; padding: 0; margin: 20px auto; background-color: darkgray; max-width: 90%; width: 900px; height: 600px;">
-        <button id="closeCoursePlayerButton" style="position: absolute; top: 5px; right: 5px; z-index: 10; cursor: pointer; ">X</button>
-        <!-- Iframe do curso será carregado aqui -->
+<!-- Seção Admin (agora estilizada via CSS) -->
+<div id="adminSection" style="display: none; margin: 20px auto; max-width: 90%; width: 800px;">
+    <br><br><br><h2>Área Administrativa</h2><br><br><br>
+    <div style="margin-bottom: 15px;"> <!-- Container para botões admin -->
+        <button id="fetchTrailsButton" type="button" style="margin-right: 10px;">� Minhas Trilhas</button>
+        <button id="createTrailButton" type="button" style="margin-right: 10px;">Criar Trilha</button>
+        <!-- Botão de Importação de JSON de Trilha -->
+        <button id="importTrailJsonButton" type="button" style="margin-right: 10px;">Importar JSON</button>
+        <!-- Input File oculto para Importação -->
+        <input type="file" id="importTrailJsonInput" accept=".json" style="display:none;">
+        <button id="fetchEbooksButton" type="button" style="margin-right: 10px;">Obter eBooks</button>
+        <button id="refreshAdminButton" type="button" title="Atualizar dados carregados">Atualizar</button>
+        <button id="assistentesAdminButton" type="button" style="margin-left: 10px;">Assistentes de IA</button>
     </div>
 
-    <div id="adminSection" style="display: none; margin: 20px auto; max-width: 90%; width: 800px;">
-        <br><br><br><h2>Área Administrativa</h2><br><br><br>
-        <div style="margin-bottom: 15px;"> <!-- Container para botões admin -->
-            <button id="fetchTrailsButton" type="button" style="margin-right: 10px;"> Minhas Trilhas</button>
-            <button id="createTrailButton" type="button" style="margin-right: 10px;">Criar Trilha</button>
-            <!-- Botão de Importação de JSON de Trilha -->
-            <button id="importTrailJsonButton" type="button" style="margin-right: 10px;">Importar JSON</button>
-            <!-- Input File oculto para Importação -->
-            <input type="file" id="importTrailJsonInput" accept=".json" style="display:none;">
-            <button id="fetchEbooksButton" type="button" style="margin-right: 10px;">Obter eBooks</button>
-            <button id="refreshAdminButton" type="button" title="Atualizar dados carregados">Atualizar</button>
-        </div>
+    <!-- Campo de Busca por Curso nas Trilhas (inicialmente oculto) -->
+    <div id="trailSearchContainer" style="margin-bottom: 15px; display: none;">
+        <input type="text" id="trailCourseSearchInput" placeholder="Buscar curso em trilhas..." class="text-input" style="width: 50%; padding: 8px 10px;">
+    </div>
 
-        <!-- Campo de Busca por Curso nas Trilhas (inicialmente oculto) -->
-        <div id="trailSearchContainer" style="margin-bottom: 15px; display: none;">
-            <input type="text" id="trailCourseSearchInput" placeholder="Buscar curso em trilhas..." class="text-input" style="width: 50%; padding: 8px 10px;">
+    <!-- Formulário para Criar Trilha (ajustar estilo se necessário) -->
+    <div id="createTrailFormContainer" style="display: none; margin-top: 15px; padding: 15px; border: 1px solid #ccc; background-color: #e9e9e9;">
+        <h4>Nova Trilha</h4>
+        <div style="margin-bottom: 10px;">
+            <label for="newTrailTitle" style="display: block; margin-bottom: 5px;">Título:</label>
+            <input type="text" id="newTrailTitle" name="newTrailTitle" style="width: 95%; padding: 5px;" required>
         </div>
+        <div style="margin-bottom: 10px;">
+            <label for="newTrailCourses" style="display: block; margin-bottom: 5px;">IDs dos Recursos (separados por vírgula):</label>
+            <input type="text" id="newTrailCourses" name="newTrailCourses" style="width: 95%; padding: 5px;" placeholder="Ex: 864,1260,2458" required>
+        </div>
+        <button id="saveTrailButton" type="button">Salvar Trilha</button>
+    </div>
 
-        <!-- Formulário para Criar Trilha (ajustar estilo se necessário) -->
-        <div id="createTrailFormContainer" style="display: none; margin-top: 15px; padding: 15px; border: 1px solid #ccc; background-color: #e9e9e9;">
-            <h4>Nova Trilha</h4>
-            <div style="margin-bottom: 10px;">
-                <label for="newTrailTitle" style="display: block; margin-bottom: 5px;">Título:</label>
-                <input type="text" id="newTrailTitle" name="newTrailTitle" style="width: 95%; padding: 5px;" required>
-            </div>
-            <div style="margin-bottom: 10px;">
-                <label for="newTrailCourses" style="display: block; margin-bottom: 5px;">IDs dos Recursos (separados por vírgula):</label>
-                <input type="text" id="newTrailCourses" name="newTrailCourses" style="width: 95%; padding: 5px;" placeholder="Ex: 864,1260,2458" required>
-            </div>
-            <button id="saveTrailButton" type="button">Salvar Trilha</button>
-        </div>
+    <div id="trailsContainer" style="margin-top: 15px;">
+        <!-- Conteúdo das trilhas será carregado aqui -->
+    </div>
 
-        <div id="trailsContainer" style="margin-top: 15px;">
-            <!-- Conteúdo das trilhas será carregado aqui -->
-        </div>
-
-        <!-- Container para eBooks -->
-        <div id="ebooksContainer" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ccc;">
-            <!-- Conteúdo dos eBooks será carregado aqui -->
-        </div>
+    <!-- Container para eBooks -->
+    <div id="ebooksContainer" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ccc;">
+        <!-- Conteúdo dos eBooks será carregado aqui -->
     </div>
 </div>
 
@@ -622,79 +566,6 @@
 <!-- Excluídos: Scripts JQuery, Fancybox, MaskedInput, page.js, Cloudflare -->
 
 <script>
-
-   // === INÍCIO: CONSTANTES E ESTRUTURAS DE DADOS GLOBAIS PORTADAS DO CLONE06 ===
-    const categoryUrl_ported = 'https://www.iped.com.br/api/category/get-categories';
-    const coursesUrl_ported = 'https://www.iped.com.br/api/course/get-courses';
-
-    const paiCategoriesData_ported = [
-        {
-            name: "50+ | Melhor Idade",
-            items: [
-                { name: "Longevidade", url: "https://longevidade.com.br/", image: "https://api.iconify.design/tabler/plant.svg?color=%23e5e5e5" },
-                { name: "Analise CNIS", url: "https://sobralfreenat.github.io/poc_avaliacao_cnis_aposentadoria/", image: "https://api.iconify.design/tabler/file-text.svg?color=%23e5e5e5" },
-                { name: "CNIS Suporte", url: "https://sobralfreenat.github.io/cnis_fluxo02_backoffice/", image: "https://api.iconify.design/tabler/tool.svg?color=%23e5e5e5" }
-            ]
-        },
-        {
-            name: "FNW Assessoria",
-            items: [
-                { name: "Plataforma FNW Assessoria", url: "https://app.appsmith.com/app/fnw-sie-agent/fnw-labv2-0-67b63bcfdfec372b51540618", image: "https://api.iconify.design/tabler/briefcase.svg?color=%23e5e5e5" },
-                { name: "FNW - ROI Maker", url: "https://sobralfreenat.github.io/fnw_clevel_roi-maker/", image: "https://api.iconify.design/tabler/calculator.svg?color=%23e5e5e5" },
-                { name: "Painel ETO", url: "https://sobralfreenat.github.io/fnw_connect_panel/", image: "https://api.iconify.design/tabler/layout-dashboard.svg?color=%23e5e5e5" },
-                { name: "Mapa Tatico SP MG", url: "https://sobralfreenat.github.io/mapa150_sp-106_mg/", image: "https://api.iconify.design/tabler/map-2.svg?color=%23e5e5e5" }
-            ]
-        }
-    ];
-
-    const suporteIaCategoriesData_ported = [
-        {
-            name: "Wizzards",
-            items: [
-                { name: "IA Prompt Wizzard", url: "https://sobralfreenat.github.io/agent_ai_prompt_gen_tool/", image: "https://api.iconify.design/tabler/wand.svg?color=%23e5e5e5" },
-                { name: "Plano de Aula - S", url: "https://sobralfreenat.github.io/fnw_plano_aula/", image: "https://api.iconify.design/tabler/school.svg?color=%23e5e5e5" }
-            ]
-        },
-        {
-            name: "Assistentes",
-            items: [
-                { name: "London Lord", url: "https://sobralfreenat.github.io/agb_gabriel_bourne_master/", image: "https://api.iconify.design/tabler/user-hexagon.svg?color=%23e5e5e5" },
-                { name: "HumanIA", url: "https://dash.superagentes.ai/@humanIA", image: "https://api.iconify.design/tabler/users-group.svg?color=%23e5e5e5" }
-            ]
-        },
-        {
-            name: "Agentes",
-            items: [
-                { name: "Agente Exemplo 1", url: "#", image: "https://api.iconify.design/tabler/robot.svg?color=%23e5e5e5" },
-                { name: "Agente Exemplo 2", url: "#", image: "https://api.iconify.design/tabler/gizmo.svg?color=%23e5e5e5" }
-            ],
-            statusMessage: ""
-        },
-        {
-            name: "Automações",
-            items: [
-                { name: "Automação Exemplo 1", url: "#", image: "https://api.iconify.design/simple-icons/n8n.svg?color=%23e5e5e5" },
-                { name: "Automação Exemplo 2", url: "#", image: "https://api.iconify.design/simple-icons/make.svg?color=%23e5e5e5" }
-            ],
-            statusMessage: ""
-        }
-    ];
-
-    const relevantKeywordsFor50Plus_ported = [
-        'saude', 'bem-estar', 'memoria', 'mente', 'corpo', 'nutricao', 'alimentacao', 'exercicio', 'ginastica', 'yoga', 'pilates', 'dança', 'esportes', 'fisioterapia',
-        'artesanato', 'pintura', 'desenho', 'musica', 'canto', 'instrumento', 'fotografia',
-        'historia', 'cultura', 'arte', 'literatura', 'idiomas', 'linguas', 'escrita',
-        'finanças', 'investimentos', 'empreendedorismo', 'negocios', 'direito', 'aposentadoria',
-        'jardinagem', 'horta', 'culinaria', 'gastronomia', 'receitas',
-        'tecnologia', 'digital', 'informatica', 'internet', 'computador', 'celular', 'redes sociais',
-        'viagem', 'turismo', 'lazer', 'jogos', 'espiritualidade', 'meditacao', 'qualidade de vida', 'voluntariado'
-    ];
-    // === FIM: CONSTANTES E ESTRUTURAS DE DADOS GLOBAIS PORTADAS DO CLONE06 ===
-
-    // === INÍCIO: CONSTANTES E ESTRUTURAS DE DADOS GLOBAIS PORTADAS DO CLONE06 ===
-  
-    // === FIM: CONSTANTES E ESTRUTURAS DE DADOS GLOBAIS PORTADAS DO CLONE06 ===
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('frmLogin');
     const emailInput = document.getElementById('email_id');
@@ -723,19 +594,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginWithInstanceIdButton = document.getElementById('loginWithInstanceIdButton');
     const importTrailJsonButton = document.getElementById('importTrailJsonButton');
     const importTrailJsonInput = document.getElementById('importTrailJsonInput');
-    const myTrailsButton = document.getElementById('myTrailsButton'); // Referência para o novo botão
+    const assistentesAdminButton = document.getElementById('assistentesAdminButton'); // NOVO: Referência ao botão Assistentes de IA
 
     // --- Elementos para o Modal do Catálogo via Iframe ---
-    // const catalogModal = document.getElementById('catalogModal'); // Comentado/Removido se não for mais usado para catálogo principal
-    // const catalogIframe = document.getElementById('catalogIframe'); // Comentado/Removido
-    // const closeCatalogModalButton = document.getElementById('closeCatalogModalButton'); // Comentado/Removido
-    const exploreCatalogBtn = document.getElementById('exploreCatalogButton');
-    // const myTrailsButton = document.getElementById('myTrailsButton'); // Esta linha será removida (originalmente linha 733)
-
-    // --- NOVOS ELEMENTOS PARA ASIDE ---
-    const asideElement = document.querySelector('aside');
-    const mainContentAreaElement = document.getElementById('mainContentArea');
-    const mainContentCoursesContainer = document.getElementById('catalogSection'); // Onde os cursos da aside serão renderizados
+    const catalogModal = document.getElementById('catalogModal');
+    const catalogIframe = document.getElementById('catalogIframe');
+    const closeCatalogModalButton = document.getElementById('closeCatalogModalButton');
+    const exploreCatalogBtn = document.getElementById('exploreCatalogButton'); // Já referenciado antes
+    // ADICIONADO: URL para a API de zerar/cancelar cursos
+    const setResetCourseApiUrl = 'https://www.iped.com.br/api/course/set-reset';
+    // --- Fim Elementos Modal Catálogo ---
 
     const apiToken = 'dbb2c4d19a5ef0fec48e363618611614b4e0dfce'; // Token 29233 fnwviedeos (Pai) - Restaurado como padrão
     // const apiToken = 'a721b3ce16d7beb657de2e22fb9bb6e08d28de2f'; // Token da Instância 29220 (Filial) - Comentado
@@ -751,16 +619,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTrailsData = []; // Guarda os dados das trilhas carregadas
     let loggedInUserEmail = null; // ADICIONADO: para guardar email do admin logado
     let loggedInUserApiToken = null; // ADICIONADO: para guardar o token usado no login bem-sucedido
-
-    // === INÍCIO: VARIÁVEIS E ESTRUTURAS DE DADOS PORTADAS DO CLONE06 ===
-    // Movidas para o escopo global acima do DOMContentLoaded
-    let asideApiToken = null; 
-    // const categoryUrl_ported = ... (movido)
-    // const coursesUrl_ported = ... (movido)
-    // const paiCategoriesData_ported = ... (movido)
-    // const suporteIaCategoriesData_ported = ... (movido)
-    // const relevantKeywordsFor50Plus_ported = ... (movido)
-    // === FIM: VARIÁVEIS E ESTRUTURAS DE DADOS PORTADAS DO CLONE06 ===
 
     // INSEGURO - APENAS PARA TESTE LOCAL: Mapeamento de ID -> Credenciais e Token
     const instanceCredentials = {
@@ -1034,6 +892,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Verifica se a resposta contém o array COURSES
             if (result.STATE === 1 && result.COURSES) {
+                console.log('Dados de cursos recebidos da API:', result.COURSES); // ADICIONADO PARA DEBUG
                 let coursesHtml = '';
                 if (result.COURSES.length === 0) {
                     coursesHtml = '<p>Nenhum recurso em andamento encontrado.</p>';
@@ -1055,15 +914,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         const progress = course.course_user?.user_course_completed;
                         coursesHtml += `
-                            <li class="course-item" data-course-id="${course.course_id}" style="cursor: pointer; margin-bottom: 5px; padding: 5px; border-bottom: 1px solid #eee;">
-                                <strong>${courseTitle}</strong>
-                                ${progress !== undefined ? `<span style="margin-left: 10px;">(${progress}%)</span>` : ''}
+                            <li class="course-item" data-course-id="${course.course_id}" style="cursor: pointer; margin-bottom: 5px; padding: 5px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <strong>${courseTitle}</strong>
+                                    ${progress !== undefined ? `<span style="margin-left: 10px;">(${progress}%)</span>` : ''}
+                                </div>
+                                <div style="display: flex; gap: 5px;">
+                                    <button class="reset-course-button" data-course-id="${course.course_id}">Zerar</button>
+                                    <button class="hide-course-button" data-course-id="${course.course_id}">Ocultar</button>
+                                </div>
                             </li>
                         `;
                     });
                     coursesHtml += '</ul>';
                 }
                 myCoursesContainer.innerHTML = coursesHtml;
+
+                // ADICIONADO: Adicionar o botão "Zerar Todos"
+                if (result.COURSES.length > 0) {
+                    const resetAllButton = document.createElement('button');
+                    resetAllButton.id = 'resetAllCoursesButton';
+                    resetAllButton.className = 'reset-all-courses-button';
+                    resetAllButton.textContent = 'Zerar Todos os Meus Acessos';
+                    myCoursesContainer.prepend(resetAllButton); // Adiciona antes do conteúdo atual
+
+                    // ADICIONADO: Botão "Limpar Display"
+                    const clearDisplayButton = document.createElement('button');
+                    clearDisplayButton.id = 'clearMyCoursesDisplayButton';
+                    clearDisplayButton.className = 'clear-display-button';
+                    clearDisplayButton.textContent = 'Limpar Display';
+                    // Encontra o resetAllButton e insere o novo botão ao lado
+                    resetAllButton.parentNode.insertBefore(clearDisplayButton, resetAllButton.nextSibling);
+                }
+
             } else if (result.STATE === 0 && result.ERROR) {
                 myCoursesContainer.innerHTML = `<p>Erro ao buscar recursos: ${result.ERROR}</p>`;
             } else {
@@ -1125,6 +1008,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
             const result = await response.json();
             
+            // ADICIONADO: Log da resposta completa da API para depuração
+            //console.log('Resposta da API course environment:', result);
+
             // Remove mensagem de carregamento
             if(loadingMessage) loadingMessage.remove();
 
@@ -1171,7 +1057,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loggedInUserToken = result.USER_TOKEN;
         loggedInUserEmail = userEmail;
         loggedInUserApiToken = tokenUsed; // ADICIONADO: guarda o token da API da instância/pai que funcionou
-        asideApiToken = tokenUsed; // NOVO: Inicializa o token para as funções da aside
 
         // Aplica o blur na imagem de fundo principal
         const mainBgContainer = document.getElementById('mainBackgroundImageContainer');
@@ -1194,87 +1079,37 @@ document.addEventListener('DOMContentLoaded', () => {
         myCoursesButton.style.display = 'inline-block'; // Troca para inline-block
 
         // MOSTRA o botão Explorar Catálogo para todos os usuários logados
-        // const exploreCatalogBtn = document.getElementById('exploreCatalogButton'); // Já referenciado globalmente
+        const exploreCatalogBtn = document.getElementById('exploreCatalogButton');
         if (exploreCatalogBtn) {
             exploreCatalogBtn.style.display = 'inline-block';
         }
-
-        // === INÍCIO: Mostrar aside e mainContentArea e popular aside ===
-        if (asideElement) asideElement.style.display = 'block';
-        if (mainContentAreaElement) mainContentAreaElement.style.display = 'block';
-
-        try {
-            if (typeof fetchCategories_ported === 'function') {
-                fetchCategories_ported();
-            } else {
-                console.error('fetchCategories_ported function is not defined.');
-                // Adicionado para dar feedback visual na UI se a função estiver faltando
-                const categoriesListEl = document.getElementById('categoriesList');
-                if (categoriesListEl) {
-                    categoriesListEl.innerHTML = '<li>Falha ao carregar: função não encontrada.</li>';
-                }
-            }
-
-            if (typeof paiCategoriesData_ported !== 'undefined' && typeof renderPaiCategoriesSidebar_ported === 'function') {
-                renderPaiCategoriesSidebar_ported();
-            } else {
-                console.error('paiCategoriesData_ported or renderPaiCategoriesSidebar_ported is not defined/ready.');
-                if (document.getElementById('paiItemsList')) {
-                     document.getElementById('paiItemsList').innerHTML = '<li>Erro ao carregar F.A.I.</li>';
-                }
-            }
-
-            if (typeof suporteIaCategoriesData_ported !== 'undefined' && typeof renderSuporteIaSubcategoriesSidebar_ported === 'function') {
-                renderSuporteIaSubcategoriesSidebar_ported();
-            } else {
-                console.error('suporteIaCategoriesData_ported or renderSuporteIaSubcategoriesSidebar_ported is not defined/ready.');
-                 if (document.getElementById('suporteIaItemsList')) {
-                     document.getElementById('suporteIaItemsList').innerHTML = '<li>Erro ao carregar Suporte IA.</li>';
-                }
-            }
-
-            if (typeof initializeAsideAccordion_ported === 'function') {
-                initializeAsideAccordion_ported();
-            } else {
-                console.error('initializeAsideAccordion_ported function is not defined.');
-            }
-        } catch (e) {
-            console.error("Erro durante a inicialização da aside em handleLoginSuccess:", e);
-            // alert("Ocorreu um erro ao configurar o menu lateral: " + e.message); // Optional: user-facing alert
-        }
-        
-        showSection('catalogSection', loggedInUserId); // Passa loggedInUserId
-        // Para carregar a primeira categoria automaticamente (OPCIONAL):
-        // setTimeout(() => { 
-        //    const firstCategoryButton = asideElement.querySelector('#categoriesList button');
-        //    if (firstCategoryButton) selectCategory_ported(firstCategoryButton);
-        // }, 200); // Pequeno timeout para garantir que a lista foi populada e DOM atualizado
-        // === FIM: Mostrar aside e mainContentArea e popular aside ===
 
         // Referência ao título da seção
         const adminSectionTitle = document.querySelector('#adminSection h2');
 
         // Mostra controles admin FNW SE o e-mail logado for o autorizado
         const loggedInEmailNormalized = userEmail.trim().toLowerCase();
-        if (authorizedAdminEmails.includes(loggedInEmailNormalized)) { // ADMIN
-            adminButton.style.display = 'inline-block'; 
-            gearIcon.style.display = 'inline-block'; 
-            // adminSection já estará escondida por showSection se não for 'catalogSection'
+        if (authorizedAdminEmails.includes(loggedInEmailNormalized)) {
+            adminButton.style.display = 'inline-block'; // Troca para inline-block
+            gearIcon.style.display = 'inline-block'; // Troca para inline-block
+            adminSection.style.display = 'none'; // Inicia oculto mesmo para admins
             if (adminSectionTitle) adminSectionTitle.textContent = 'Área Administrativa';
-            if (myTrailsButton) myTrailsButton.style.display = 'none'; // Garante que o botão "Minhas Trilhas" (novo) não apareça para admins
-        } else { // NÃO-ADMIN
+        } else {
             adminButton.style.display = 'none';
             gearIcon.style.display = 'none';
-            // adminSection já estará escondida por showSection.
-            // O usuário não-admin usará o botão "Minhas Trilhas" para ver adminSection
+            adminSection.style.display = 'block'; // Mostra automaticamente apenas botão Minhas Trilhas para usuários comuns
+            // Esconde todos os botões admin exceto Minhas Trilhas para usuários não-admin
+            createTrailButton.style.display = 'none';
+            fetchEbooksButton.style.display = 'none';
+            refreshAdminButton.style.display = 'none';
+            // Muda o título da seção
             if (adminSectionTitle) adminSectionTitle.textContent = 'Minhas Trilhas de Aprendizado';
-            if (myTrailsButton) myTrailsButton.style.display = 'inline-block'; // Mostra botão "Minhas Trilhas" para não-admin
-            fetchAndDisplayTrails(); // Carrega os dados das trilhas em segundo plano para não-admins
+            // Busca trilhas automaticamente
+            fetchAndDisplayTrails();
         }
-        // Oculta seções que podem estar abertas de um login anterior (redundante se showSection já fez isso, mas seguro)
+        // Oculta seções que podem estar abertas de um login anterior
         myCoursesSection.style.display = 'none';
         coursePlayerContainer.style.display = 'none';
-        // adminSection também será oculta por showSection('catalogSection',...) a menos que seja explicitamente mostrada depois
     }
 
     // Função para realizar a chamada da API de login (AGORA ACEITA TOKEN ESPECÍFICO)
@@ -1315,8 +1150,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verifica se todos os elementos necessários existem (incluindo os novos para Login por ID)
     const trailCourseSearchInput = document.getElementById('trailCourseSearchInput');
     // START LOGIN POR ID (TEMPORARIO) - Verificação de elementos
-    if (loginForm && emailInput && passwordInput && adminButton && adminSection && gearIcon && fetchTrailsButton && trailsContainer && createTrailButton && createTrailFormContainer && newTrailTitleInput && newTrailCoursesInput && saveTrailButton && fetchEbooksButton && ebooksContainer && refreshAdminButton && myCoursesButton && myCoursesSection && myCoursesContainer && coursePlayerContainer && loginCardDiv && closeCoursePlayerButton && trailCourseSearchInput && trailSearchContainer && instanceIdInput && loginWithInstanceIdButton && importTrailJsonButton && importTrailJsonInput && myTrailsButton /* Adicionado myTrailsButton */) {
+    if (loginForm && emailInput && passwordInput && adminButton && adminSection && gearIcon && fetchTrailsButton && trailsContainer && createTrailButton && createTrailFormContainer && newTrailTitleInput && newTrailCoursesInput && saveTrailButton && fetchEbooksButton && ebooksContainer && refreshAdminButton && myCoursesButton && myCoursesSection && myCoursesContainer && coursePlayerContainer && loginCardDiv && closeCoursePlayerButton && trailCourseSearchInput && trailSearchContainer && instanceIdInput && loginWithInstanceIdButton && importTrailJsonButton && importTrailJsonInput) {
     // END LOGIN POR ID (TEMPORARIO) - Verificação de elementos
+
+        // ADICIONADO: Define o texto inicial do botão Meus Cursos
+        myCoursesButton.textContent = 'Mostrar Meus Acessos';
 
         // Listener do Login PADRÃO (E-mail/Senha)
         loginForm.addEventListener('submit', async (event) => {
@@ -1452,8 +1290,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (myCoursesSection.style.display === 'block') {
                 myCoursesSection.style.display = 'none';
                 coursePlayerContainer.style.display = 'none'; // Esconde player tbm se fechar a lista
+                myCoursesButton.textContent = 'Mostrar Meus Acessos'; // Altera o texto do botão
             } else {
                 fetchAndDisplayMyCourses(); // Busca e mostra a seção
+                myCoursesButton.textContent = 'Ocultar Meus Acessos'; // Altera o texto do botão
             }
         });
 
@@ -1523,76 +1363,87 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Listener para o novo botão "Minhas Trilhas"
-        if (myTrailsButton) {
-            myTrailsButton.addEventListener('click', () => {
-                if (loggedInUserId) { // Verifica se está logado
-                    showSection('adminSection', loggedInUserId);
-                    // As trilhas devem ter sido carregadas por fetchAndDisplayTrails() em handleLoginSuccess para não-admins.
-                    // Se por algum motivo a adminSection estiver vazia (ex: erro no fetch inicial), recarrega.
-                    if (trailsContainer && (trailsContainer.innerHTML.includes('Nenhuma trilha encontrada') || trailsContainer.innerHTML.trim() === '' || trailsContainer.innerHTML.includes('<p>Carregando trilhas...</p>') || trailsContainer.innerHTML.includes('<p>Erro:'))) {
-                         fetchAndDisplayTrails();
+        // ADICIONADO: Listener delegado para o botão "Zerar Todos"
+        myCoursesContainer.addEventListener('click', async (event) => {
+            if (event.target.id === 'resetAllCoursesButton') {
+                if (confirm('Tem certeza que deseja zerar o progresso de TODOS os seus recursos?')) {
+                    const allCourses = Array.from(myCoursesContainer.querySelectorAll('.course-item'));
+                    for (const courseItem of allCourses) {
+                        const courseId = courseItem.dataset.courseId;
+                        if (courseId) {
+                            await resetCourse(courseId, 'Zerar'); // Chama para cada curso
+                        }
                     }
-                } else {
-                    alert('Por favor, faça login para ver suas trilhas.');
+                    alert('Todos os recursos foram zerados (ou tentativa de zerar realizada).');
+                    fetchAndDisplayMyCourses(); // Recarrega a lista após zerar
                 }
-            });
-        }
+            } else if (event.target.classList.contains('reset-course-button')) {
+                const courseId = event.target.dataset.courseId;
+                if (courseId && confirm(`Tem certeza que deseja zerar o progresso deste recurso (ID: ${courseId})?`)) {
+                    await resetCourse(courseId, 'Zerar');
+                    alert('Recurso zerado (ou tentativa de zerar realizada).');
+                    fetchAndDisplayMyCourses(); // Recarrega a lista após zerar um único curso
+                }
+            } else if (event.target.classList.contains('hide-course-button')) { // NOVO: Listener para Ocultar (Display Only)
+                const courseItem = event.target.closest('.course-item');
+                if (courseItem) {
+                    if (confirm('Tem certeza que deseja OCULTAR este recurso da lista (apenas display)?')) {
+                        courseItem.remove(); // Remove o elemento do DOM
+                        alert('Recurso ocultado da exibição.');
+                    }
+                }
+            } else if (event.target.id === 'clearMyCoursesDisplayButton') { // NOVO: Listener para Limpar Display Total
+                if (confirm('Tem certeza que deseja LIMPAR TODOS os recursos da exibição (apenas display)?')) {
+                    myCoursesContainer.querySelector('ul').innerHTML = '<p>Exibição limpa. Recarregue a página para ver os cursos novamente.</p>'; // Limpa a lista
+                    // Também pode remover os botões de controle para evitar cliques em lista vazia
+                    const resetAllBtn = document.getElementById('resetAllCoursesButton');
+                    const clearDisplayBtn = document.getElementById('clearMyCoursesDisplayButton');
+                    if (resetAllBtn) resetAllBtn.remove();
+                    if (clearDisplayBtn) clearDisplayBtn.remove();
+                    alert('Todos os recursos foram removidos da exibição.');
+                }
+            }
+        });
+
+        // NOVO: Listener para o botão Assistentes de IA
+        assistentesAdminButton.addEventListener('click', () => {
+            if (loggedInUserApiToken && loggedInUserId) {
+                const assistentesUrl = 'https://sobralfreenat.github.io/chat_rosio_livia_geriah/';
+                const iframeSrc = `${assistentesUrl}?userToken=${encodeURIComponent(loggedInUserApiToken)}&userId=${encodeURIComponent(loggedInUserId)}&embedded=true&origin=${encodeURIComponent(window.location.origin)}`;
+                catalogIframe.src = iframeSrc;
+                catalogModal.style.display = 'flex'; // Usa flex para centralizar
+            } else {
+                alert('Por favor, faça login para acessar os Assistentes de IA.');
+            }
+        });
 
     } else {
-        console.error('Erro: Não foi possível encontrar um ou mais elementos necessários (formulário/admin/trilhas/criação/ebooks/refresh/gearIcon/myCourses/coursePlayer/closeButton/trailCourseSearchInput/trailSearchContainer/instanceIdInput/loginWithInstanceIdButton/importTrailJsonButton/importTrailJsonInput/myTrailsButton).');
+        console.error('Erro: Não foi possível encontrar um ou mais elementos necessários (formulário/admin/trilhas/criação/ebooks/refresh/gearIcon/myCourses/coursePlayer/closeButton/trailCourseSearchInput/trailSearchContainer/instanceIdInput/loginWithInstanceIdButton/importTrailJsonButton/importTrailJsonInput).');
     }
 
-    // --- Lógica para o Modal do Catálogo --- (Revisada)
-    // O botão exploreCatalogBtn agora controla a visualização da seção do catálogo da aside.
-    if (exploreCatalogBtn) {
+    // --- Lógica para o Modal do Catálogo ---
+    if (exploreCatalogBtn && catalogModal && catalogIframe && closeCatalogModalButton) {
         exploreCatalogBtn.addEventListener('click', function() {
             if (loggedInUserApiToken && loggedInUserId) {
-                // Garante que a aside e o mainContentArea estejam visíveis (caso não estejam por algum motivo)
-                if (asideElement && asideElement.style.display === 'none') asideElement.style.display = 'block';
-                if (mainContentAreaElement && mainContentAreaElement.style.display === 'none') mainContentAreaElement.style.display = 'block';
-                
-                showSection('catalogSection', loggedInUserId); // Mostra a área onde o conteúdo da aside será renderizado
-                                            // A interação com a aside (selecionar categoria) irá popular esta seção.
+                const catalogBaseUrl = 'https://sobralfreenat.github.io/fnw_curadoria_sie/'; // Sua URL
+                // Adiciona parâmetros para o iframe
+                const iframeSrc = `${catalogBaseUrl}?userToken=${encodeURIComponent(loggedInUserApiToken)}&userId=${encodeURIComponent(loggedInUserId)}&embedded=true&origin=${encodeURIComponent(window.location.origin)}`;
+                catalogIframe.src = iframeSrc;
+                catalogModal.style.display = 'flex'; // Usa flex para centralizar (definido no inline style do modal)
             } else {
                 alert('Por favor, faça login para explorar o catálogo.');
             }
         });
-    } else {
-        console.error("Botão exploreCatalogButton não encontrado.");
-    }
-
-    // Lógica original do catalogModal (iframe) - Mantida mas desvinculada do exploreCatalogButton principal.
-    // Pode ser usada para outra finalidade ou removida se não for mais necessária.
-    const catalogModal = document.getElementById('catalogModal');
-    const catalogIframe = document.getElementById('catalogIframe');
-    const closeCatalogModalButton = document.getElementById('closeCatalogModalButton');
-
-    if (catalogModal && catalogIframe && closeCatalogModalButton) {
-        // Exemplo de como poderia ser reativado com um *outro* botão:
-        // const someOtherButton = document.getElementById('someOtherButtonId');
-        // if (someOtherButton) {
-        //     someOtherButton.addEventListener('click', function() {
-        //         if (loggedInUserApiToken && loggedInUserId) {
-        //             const catalogBaseUrl = 'https://sobralfreenat.github.io/fnw_curadoria_sie/';
-        //             const iframeSrc = `${catalogBaseUrl}?userToken=${encodeURIComponent(loggedInUserApiToken)}&userId=${encodeURIComponent(loggedInUserId)}&embedded=true&origin=${encodeURIComponent(window.location.origin)}`;
-        //             catalogIframe.src = iframeSrc;
-        //             catalogModal.style.display = 'flex';
-        //         } else {
-        //             alert('Por favor, faça login.');
-        //         }
-        //     });
-        // }
 
         closeCatalogModalButton.addEventListener('click', function() {
             catalogModal.style.display = 'none';
-            catalogIframe.src = 'about:blank';
+            catalogIframe.src = 'about:blank'; // Limpa o iframe ao fechar
         });
     } else {
-        console.warn('Elementos do modal de catálogo via iframe (catalogModal, catalogIframe, closeCatalogModalButton) não foram encontrados. A funcionalidade de modal iframe não estará disponível.');
+        console.error('Elementos do modal do catálogo não encontrados!');
     }
 
-    // Listener para mensagens do iframe (manter se o iframe ainda for usado para algo)
+    // Listener para mensagens do iframe
     window.addEventListener('message', function(event) {
         // Opcional: verificar event.origin por segurança se a URL do catálogo for de outro domínio
         // if (event.origin !== 'URL_ESPERADA_DO_CATALOGO') return;
@@ -1602,13 +1453,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Ação recebida do iframe: acessarItem', event.data.itemId);
                 if (event.data.itemId) {
                     loadCourseEnvironment(event.data.itemId); // Sua função existente
-                    asideElement.style.display = 'none';
-                    mainContentCoursesContainer.style.display = 'none';
+                    catalogModal.style.display = 'none'; // Fecha o modal do catálogo
+                    catalogIframe.src = 'about:blank';
                 }
             } else if (event.data.action === 'finalizarTrilha') {
                 console.log('Ação recebida do iframe: finalizarTrilha', event.data.trilhaData);
-                asideElement.style.display = 'none';
-                mainContentCoursesContainer.style.display = 'none';
+                catalogModal.style.display = 'none'; // Fecha o modal do catálogo
+                catalogIframe.src = 'about:blank';
                 // Aqui você pegaria event.data.trilhaData e continuaria o processo:
                 // 1. Prompt para nome e email (como era feito na página de curadoria)
                 // 2. Geração e download do JSON
@@ -1633,196 +1484,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function showSection(sectionId, currentLoggedInUserId) { // Aceita currentLoggedInUserId
-    // console.log("Mostrando seção:", sectionId, " UserID:", currentLoggedInUserId);
-    const sections = ['catalogSection', 'myCoursesSection', 'adminSection', 'coursePlayerContainer'];
-    
-    const mainContentAreaElement = document.getElementById('mainContentArea'); // Garante que a referência seja local à função
-
-    // Garante que o mainContentArea esteja visível se alguma de suas subseções for ser mostrada
-    // e o usuário estiver logado (para não mostrar mainContentArea antes do login)
-    if (currentLoggedInUserId && mainContentAreaElement && mainContentAreaElement.style.display === 'none') {
-        // Apenas mostra o mainContentArea se a sectionId for uma de suas filhas diretas ou o player
-        if (['catalogSection', 'myCoursesSection', 'adminSection', 'coursePlayerContainer'].includes(sectionId)) {
-             mainContentAreaElement.style.display = 'block';
-        }
-    }
-
+function showSection(sectionId) {
+    const sections = ['catalogSection', 'myCoursesSection', 'adminSection']; // Adicione outros IDs de seção aqui
     sections.forEach(id => {
         const section = document.getElementById(id);
         if (section) {
             section.style.display = (id === sectionId) ? 'block' : 'none';
-        } else {
-            // console.warn("Seção não encontrada em showSection:", id);
         }
     });
-
-    // Não é mais necessário verificar coursePlayerContainer separadamente aqui, pois está incluído na lógica acima.
-
 }
 
-function renderPaiCategoriesSidebar_ported() {
-    const paiListUl = document.getElementById('paiItemsList');
-    if (!paiListUl) {
-        console.error("Elemento paiItemsList não encontrado.");
-        paiListUl.innerHTML = '<li>Erro: Elemento da lista não encontrado.</li>'; // Feedback na UI
-        return;
-    }
-    paiListUl.innerHTML = ''; // Limpa antes de popular
+// ADICIONADO: Função para zerar ou cancelar um curso
+async function resetCourse(courseId, actionType = 'Zerar', comment = '') {
+    console.log(`[resetCourse] Iniciando ${actionType} para o curso ID: ${courseId}`);
 
-    if (!paiCategoriesData_ported || paiCategoriesData_ported.length === 0) {
-        paiListUl.innerHTML = '<li>Nenhuma categoria F.A.I. configurada.</li>';
-        return;
+    if (!loggedInUserId || !loggedInUserToken || !loggedInUserApiToken) {
+        alert('Erro: Usuário não logado ou informações incompletas para zerar/cancelar curso.');
+        console.error('[resetCourse] Usuário não logado ou informações incompletas.');
+        return false;
     }
 
-    paiCategoriesData_ported.forEach(paiCategory => {
-        const li = document.createElement('li');
-        const btn = document.createElement('button');
-        btn.textContent = paiCategory.name;
-        btn.addEventListener('click', () => {
-            paiListUl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            showSection('catalogSection', loggedInUserId); // Mostrar a área de conteúdo correta e passa loggedInUserId
-            displayPaiCategoryItems_ported(paiCategory);
-        });
-        li.appendChild(btn);
-        paiListUl.appendChild(li);
-    });
-}
-
-function displayPaiCategoryItems_ported(paiCategory) {
-    if (!mainContentCoursesContainer) {
-        console.error('mainContentCoursesContainer não encontrado para displayPaiCategoryItems_ported.');
-        return;
-    }
-    mainContentCoursesContainer.innerHTML = ''; // Limpa o catalogSection
-
-    const paiSectionTitle = document.createElement('h2');
-    paiSectionTitle.className = 'category-title-header';
-    paiSectionTitle.textContent = `F.A.I. - ${paiCategory.name}`;
-    mainContentCoursesContainer.appendChild(paiSectionTitle);
-
-    if ((!paiCategory.items || paiCategory.items.length === 0)) {
-        const noItemsMessage = document.createElement('p');
-        noItemsMessage.textContent = paiCategory.statusMessage || `Nenhum recurso encontrado na categoria F.A.I.: ${paiCategory.name}.`;
-        noItemsMessage.style.color = '#ccc';
-        noItemsMessage.style.marginTop = '20px';
-        mainContentCoursesContainer.appendChild(noItemsMessage);
-        return;
-    }
-
-    const carouselTrack = document.createElement('div');
-    carouselTrack.className = 'carousel-track';
-
-    paiCategory.items.forEach(paiItem => {
-        const card = document.createElement('div');
-        card.className = 'course-card';
-        card.innerHTML = `
-            <img src="${paiItem.image || 'https://via.placeholder.com/308x196.png?text=Recurso'}" alt="${paiItem.name}" style="width:100%; height:196px; object-fit:cover; border-bottom: 1px solid rgba(80, 48, 96, 0.9);">
-            <div class="info" style="padding:15px;">
-                <h3 style="margin:0 0 10px; font-size:1.05em; color:#fff; height: 56px; overflow: hidden;">${paiItem.name}</h3>
-                <p style="font-size:0.85em; color:#ccc; margin:0; line-height: 1.3; height: 70px; overflow: hidden;">Clique para abrir este recurso.</p>
-            </div>`;
-        card.addEventListener('click', () => {
-            window.open(paiItem.url, '_blank'); // Abre em nova aba
-        });
-        carouselTrack.appendChild(card);
-    });
-    mainContentCoursesContainer.appendChild(carouselTrack);
+    const formData = new FormData();
+    formData.append('token', loggedInUserApiToken);
+    formData.append('user_id', loggedInUserId);
+    formData.append('user_token', loggedInUserToken);
+    formData.append('course_id', courseId);
     
-    if (typeof updateCarouselFocus_ported === 'function' && typeof snapToNearestCard_ported === 'function' && typeof debounce_ported === 'function') {
-        const debouncedUpdateFocus = debounce_ported(() => updateCarouselFocus_ported(carouselTrack), 50);
-        let scrollEndTimer = null;
-        carouselTrack.addEventListener('scroll', () => {
-            debouncedUpdateFocus();
-            clearTimeout(scrollEndTimer);
-            scrollEndTimer = setTimeout(() => {
-                snapToNearestCard_ported(carouselTrack);
-            }, 150);
+    // Define a ação com base no tipo
+    if (actionType === 'Zerar') {
+        formData.append('action', '1'); // 1 para zerar
+    } else if (actionType === 'Cancelar') {
+        formData.append('action', '2'); // 2 para cancelar
+        if (comment) {
+            formData.append('comment', comment);
+        } else {
+            alert('Comentário é obrigatório para cancelar um curso.');
+            return false;
+        }
+    } else {
+        console.error('[resetCourse] Tipo de ação inválido:', actionType);
+        return false;
+    }
+
+    try {
+        const response = await fetch(setResetCourseApiUrl, {
+            method: 'POST',
+            body: formData
         });
-        setTimeout(() => updateCarouselFocus_ported(carouselTrack), 0);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Erro HTTP: ${response.status} - ${errorText}`);
+        }
+        const result = await response.json();
+
+        if (result.SUCCESS) {
+            console.log(`[resetCourse] ${actionType} bem-sucedido para o curso ID ${courseId}: ${result.SUCCESS}`);
+            return true;
+        } else if (result.ERROR) {
+            console.error(`[resetCourse] Erro na API ao ${actionType.toLowerCase()} o curso ID ${courseId}: ${result.ERROR}`);
+            alert(`Erro ao ${actionType.toLowerCase()} o curso: ${result.ERROR}`);
+            return false;
+        } else {
+            console.error(`[resetCourse] Resposta inesperada da API set-reset para o curso ID ${courseId}:`, result);
+            alert(`Erro inesperado ao ${actionType.toLowerCase()} o curso.`);
+            return false;
+        }
+    } catch (error) {
+        console.error(`[resetCourse] Falha na comunicação com a API ao ${actionType.toLowerCase()} o curso ID ${courseId}:`, error);
+        alert(`Falha ao conectar com a API para ${actionType.toLowerCase()} o curso: ${error.message}`);
+        return false;
     }
 }
-
-function renderSuporteIaSubcategoriesSidebar_ported() {
-    const ul = document.getElementById('suporteIaItemsList');
-    if (!ul) {
-        console.error("Elemento suporteIaItemsList não encontrado.");
-        ul.innerHTML = '<li>Erro: Elemento da lista não encontrado.</li>'; // Feedback na UI
-        return;
-    }
-    ul.innerHTML = ''; // Limpa antes de popular
-
-    if (!suporteIaCategoriesData_ported || suporteIaCategoriesData_ported.length === 0) {
-        ul.innerHTML = '<li>Nenhuma subcategoria de Suporte IA configurada.</li>';
-        return;
-    }
-
-    suporteIaCategoriesData_ported.forEach(subCategory => {
-        const li = document.createElement('li');
-        const btn = document.createElement('button');
-        btn.textContent = subCategory.name;
-        btn.addEventListener('click', () => {
-            ul.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            showSection('catalogSection', loggedInUserId); // Mostrar a área de conteúdo correta e passa loggedInUserId
-            displayPaiCategoryItems_ported(subCategory); // Reutiliza a função, pois a estrutura é similar
-        });
-        li.appendChild(btn);
-        ul.appendChild(li);
-    });
-}
-
-function initializeAsideAccordion_ported() {
-    console.log('[AsideDebug] Inicializando acordeão...');
-    if (!asideElement) {
-        console.error('[AsideDebug] asideElement NÃO encontrado em initializeAsideAccordion_ported!');
-        return;
-    }
-    console.log('[AsideDebug] asideElement encontrado:', asideElement);
-
-    const headers = asideElement.querySelectorAll('.accordion-header');
-    console.log('[AsideDebug] Encontrados ' + headers.length + ' accordion-headers.');
-
-    headers.forEach(header => {
-        console.log('[AsideDebug] Configurando listener para o header:', header);
-        header.addEventListener('click', () => {
-            console.log('[AsideDebug] Header CLICADO:', header);
-            const content = header.nextElementSibling;
-            console.log('[AsideDebug] Content (nextElementSibling):', content);
-            const icon = header.querySelector('.accordion-icon');
-            
-            if (!content) {
-                console.error('[AsideDebug] ERRO: content (accordion-content) não encontrado para o header:', header);
-                return;
-            }
-
-            const isVisible = content.style.display === 'block';
-            console.log('[AsideDebug] Content estava visível? ', isVisible);
-            
-            // Fecha todos os outros abertos na aside
-            asideElement.querySelectorAll('.accordion-content').forEach(c => {
-                if (c !== content) {
-                    c.style.display = 'none';
-                    const otherIcon = c.previousElementSibling.querySelector('.accordion-icon');
-                    if (otherIcon) otherIcon.textContent = '▼';
-                }
-            });
-
-            content.style.display = isVisible ? 'none' : 'block';
-            console.log('[AsideDebug] Novo display do content: ' + content.style.display);
-            if (icon) {
-                icon.textContent = isVisible ? '▼' : '▲';
-                console.log('[AsideDebug] Novo ícone: ' + icon.textContent);
-            }
-        });
-    });
-}
-
-// === FIM: FUNÇÕES PORTADAS DO CLONE06 ===
-
-// Função para RENDERIZAR as trilhas no container
-// ... existing code ...
 
 </script>
 
