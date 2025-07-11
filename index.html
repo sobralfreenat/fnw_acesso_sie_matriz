@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - DUNIAH</title>
-    <link rel="icon" href="https://d1yei2z3i6k35z.cloudfront.net/3119789/6866b1c7ddd7b_perfilnovalogoPrancheta1copia71.png" type="image/x-icon">
+    <title>Login - FNW ASSESSORIA</title>
+    <link rel="icon" href="https://sobralfreenat.github.io/fnw_lab_carrinho_ferramentas/" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
         body {
             font-family: 'Segoe UI', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #F44336dd, #F44336);
+            background: linear-gradient(135deg, #607D8Bdd, #607D8B);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -39,11 +39,11 @@
              width: 135px;
              height: 135px;
              margin: 0 auto 25px;
-             background-image: url("https://d1yei2z3i6k35z.cloudfront.net/3119789/6866b1c7ddd7b_perfilnovalogoPrancheta1copia71.png");
+             background-image: url("https://sobralfreenat.github.io/fnw_lab_carrinho_ferramentas/");
              background-size: contain;
              background-repeat: no-repeat;
              background-position: center;
-             border: 4px solid #F44336;
+             border: 4px solid #607D8B;
              border-radius: 50%;
              background-color: #f8f9fa;
          }
@@ -75,15 +75,15 @@
         }
         input:focus {
             outline: none;
-            border-color: #F44336;
+            border-color: #607D8B;
             background: white;
-            box-shadow: 0 0 0 4px #F4433622;
+            box-shadow: 0 0 0 4px #607D8B22;
             transform: translateY(-2px);
         }
         .login-btn {
             width: 100%;
             padding: 18px;
-            background: #F44336;
+            background: #607D8B;
             color: white;
             border: none;
             border-radius: 10px;
@@ -96,9 +96,9 @@
             letter-spacing: 1px;
         }
         .login-btn:hover {
-            background: #F44336dd;
+            background: #607D8Bdd;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px #F4433644;
+            box-shadow: 0 10px 25px #607D8B44;
         }
         .footer {
             margin-top: 30px;
@@ -111,7 +111,7 @@
         }
         .spinner {
             border: 3px solid #f3f3f3;
-            border-top: 3px solid #F44336;
+            border-top: 3px solid #607D8B;
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -127,7 +127,7 @@
 <body>
     <div class="login-container">
         <div class="logo"></div>
-        <h1>DUNIAH</h1>
+        <h1>FNW ASSESSORIA</h1>
         <form onsubmit="return doLogin(event)" id="loginForm">
             <div class="form-group">
                 <label for="usuario">👤 Usuário:</label>
@@ -148,7 +148,7 @@
         </div>
         
         <div class="footer">
-            Sistema Bundle - DUNIAH<br>
+            Sistema Bundle - FNW ASSESSORIA<br>
             Gerado automaticamente pelo SIE
         </div>
     </div>
@@ -171,7 +171,7 @@
             
             // Simular delay de login e redirecionar
             setTimeout(() => {
-                window.location.href = "https://sobralfreenat.github.io/fnw_curadoria_sie/";
+                window.location.href = "panel.html";
             }, 1500);
             
             return false;
